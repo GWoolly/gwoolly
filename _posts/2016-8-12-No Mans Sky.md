@@ -11,10 +11,4 @@ client: Hello Games / Testology Ltd
 category: QA Testing
 description: QA Tester
 link: https://store.steampowered.com/app/275850/No_Mans_Sky/
-content: |
- Line 1
- Line 2
- # Heading
- h1 heading
 ---
-Outside

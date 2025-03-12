@@ -11,10 +11,4 @@ client: Dlala Studios / Rare Ltd
 category: QA Testing
 description: QA Tester
 link: https://www.aardman.com/film-tv-games/chicken-run-eggstraction/
-content: |
- Line 1
- Line 2
- # Heading
- h1 heading
 ---
-Outside

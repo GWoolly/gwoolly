@@ -11,5 +11,3 @@ category: QA Testing
 description: I'm currently wrapping up the final touches on this game as QA Lead!
 link: https://www.aardman.com/film-tv-games/chicken-run-eggstraction/
 ---
-# Extra text
-h1 header1
