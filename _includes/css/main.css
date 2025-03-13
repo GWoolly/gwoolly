@@ -398,16 +398,54 @@ footer .footer-below {
     outline: 0;
 }
 
+
+
+/* .portfolio-modal .modal-content { */
+    /* padding: 100px 0; */
+    /* min-height: 100%; */
+    /* border: 0; */
+    /* border-radius: 0; */
+    /* text-align: center; */
+    /* background-clip: border-box; */
+    /* -webkit-box-shadow: none; */
+    /* box-shadow: none; */
+/* } */
+
+/* Enhanced Modal Responsiveness */
 .portfolio-modal .modal-content {
-    padding: 100px 0;
-    min-height: 100%;
-    border: 0;
-    border-radius: 0;
-    text-align: center;
-    background-clip: border-box;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    padding: 50px 0; /* Reduced padding for mobile */
+    width: 100%;
+    overflow-x: hidden;
 }
+
+/* Responsive video container */
+.portfolio-modal .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto 30px;
+}
+
+.portfolio-modal .video-container iframe,
+.portfolio-modal .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive video preview */
+.video-preview-overlay {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
 
 .portfolio-modal .modal-content h2 {
     margin: 0;
@@ -422,39 +460,82 @@ footer .footer-below {
     margin: 30px 0;
 }
 
-.portfolio-modal .close-modal {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 75px;
-    height: 75px;
-    background-color: transparent;
-    cursor: pointer;
+/* .portfolio-modal .close-modal { */
+    /* position: absolute; */
+    /* top: 25px; */
+    /* right: 25px; */
+    /* width: 75px; */
+    /* height: 75px; */
+    /* background-color: transparent; */
+    /* cursor: pointer; */
+/* } */
+
+/* .portfolio-modal .close-modal:hover { */
+    /* opacity: .3; */
+/* } */
+
+/* .portfolio-modal .close-modal .lr { */
+    /* z-index: 1051; */
+    /* width: 1px; */
+    /* height: 75px; */
+    /* margin-left: 35px; */
+    /* background-color: #{{ site.color.secondary }}; */
+    /* -webkit-transform: rotate(45deg); */
+    /* -ms-transform: rotate(45deg); */
+    /* transform: rotate(45deg); */
+/* } */
+
+/* .portfolio-modal .close-modal .lr .rl { */
+    /* z-index: 1052; */
+    /* width: 1px; */
+    /* height: 75px; */
+    /* background-color: #{{ site.color.secondary }}; */
+    /* -webkit-transform: rotate(90deg); */
+    /* -ms-transform: rotate(90deg); */
+    /* transform: rotate(90deg); */
+/* } */
+
+.close-modal {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 1060; /* Ensure it's above other modal elements */
 }
 
-.portfolio-modal .close-modal:hover {
-    opacity: .3;
+.close-modal .lr, .close-modal .rl {
+  position: absolute;
+  z-index: 1061;
+  width: 2px;
+  height: 35px; /* Increase the height for better visibility */
+  background-color: #{{ site.color.secondary }};
 }
 
-.portfolio-modal .close-modal .lr {
-    z-index: 1051;
-    width: 1px;
-    height: 75px;
-    margin-left: 35px;
-    background-color: #{{ site.color.secondary }};
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+.close-modal .lr {
+  transform: rotate(45deg);
+  margin-left: 24px; /* Center the X */
 }
 
-.portfolio-modal .close-modal .lr .rl {
-    z-index: 1052;
-    width: 1px;
-    height: 75px;
-    background-color: #{{ site.color.secondary }};
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+.close-modal .rl {
+  transform: rotate(-45deg);
+  margin-left: 24px; /* Center the X */
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 767px) {
+  .close-modal {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .close-modal .lr, .close-modal .rl {
+    height: 30px;
+    margin-left: 19px;
+  }
 }
 
 .navbar-nav>.active>a {
@@ -472,25 +553,48 @@ footer .footer-below {
 
 
 
+/* hr.star-div { */
+    /* margin: 25px auto 30px; */
+    /* padding: 0; */
+    /* max-width: 250px; */
+    /* border: 0; */
+    /* height: 5px; /* Line thickness */ */
+    /* overflow: visible; */
+    /* color: inherit; /* Inherit text color from the parent */ */
+    /* background: linear-gradient( */
+      /* to right, */
+      /* currentColor 0%, */
+      /* currentColor 40%, */
+      /* transparent 40%, */
+      /* transparent 60%, */
+      /* currentColor 60%, */
+      /* currentColor 100% */
+    /* ); */
+    /* position: relative; */
+    /* --hr-icon: "\f005"; /* Default icon: star */ */
+
+
+/* } */
+
+.star-div {
+  margin: 15px auto 30px;
+  padding: 0;
+  text-align: center;
+  max-width: 250px;
+  border: 0;
+  border-top: solid 5px;
+  border-color: #{{ site.color.primary }};
+  display: block; /* Ensure it's displayed as a block element */
+}
+
 hr.star-div {
-    margin: 25px auto 30px;
-    padding: 0;
-    max-width: 250px;
-    border: 0;
-    height: 5px; /* Line thickness */
-    overflow: visible;
-    color: inherit; /* Inherit text color from the parent */
-    background: linear-gradient(
-      to right,
-      currentColor 0%,
-      currentColor 40%,
-      transparent 40%,
-      transparent 60%,
-      currentColor 60%,
-      currentColor 100%
-    );
-    position: relative;
-    --hr-icon: "\f005"; /* Default icon: star */
+  margin: 15px auto 30px;
+  padding: 0;
+  text-align: center;
+  max-width: 250px;
+  border: 0;
+  border-top: solid 5px;
+  border-color: #{{ site.color.primary }};
 }
 
 hr.star-div:after {
@@ -562,24 +666,164 @@ hr.star-div.gamepad {
   cursor: pointer;
 }
 
-.video-preview-overlay {
-  position: relative;
-}
-
+/* Play button styles */
 .play-button {
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4em;
-  color: rgba(255,255,255,0.8);
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+  color: rgba(255, 255, 255, 1.0);
+  filter: drop-shadow(7px 3px 1px rgba(0, 0, 0, 0.9));
+  transition: all .2s ease;
+  pointer-events: none; /* Allows clicks to pass through to underlying elements */
+}
+
+/* /* Container for the video preview */ */
+/* .video-preview-overlay { */
+  /* position: relative; */
+  /* cursor: pointer; /* Indicates clickable area */ */
+/* } */
+
+/* .video-preview-overlay img { */
+  /* width: 100%; */
+  /* height: auto; */
+/* } */
+
+
+/* Responsive video preview */
+.video-preview-overlay {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .video-preview-overlay img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
 }
+
+
+/* Adjust play button size for mobile */
+@media (max-width: 767px) {
+    .play-button {
+        font-size: 3em;
+    }
+    
+    .portfolio-modal .modal-content {
+        padding: 30px 15px;
+    }
+    
+    .portfolio-modal .modal-content h2 {
+        font-size: 2em;
+    }
+    
+    .portfolio-modal .modal-content .content-inner {
+        padding: 0 15px;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .play-button {
+        font-size: 2em;
+    }
+    
+    .portfolio-modal .close-modal {
+        width: 50px;
+        height: 50px;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .portfolio-modal .close-modal .lr,
+    .portfolio-modal .close-modal .lr .rl {
+        height: 50px;
+    }
+}
+
+/* Target play button when container is hovered */
+.video-preview-overlay:hover .play-button {
+  color: #{{ site.color.primary }};
+  transform: translate(-50%, -50%) scale(1.5);
+  filter: drop-shadow(7px 3px 2px rgba(0, 0, 0, 0.75));
+}
+
+/* Maintain hover effects on the button itself */
+.play-button:hover {
+  color: #{{ site.color.primary }};
+  transform: translate(-50%, -50%) scale(1.5);
+  filter: drop-shadow(7px 3px 4px rgba(0, 0, 0, 0.75));
+}
+
+
+// Modal Content
+.platform-icons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.platform-icons h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.platform-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.platform-icon {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  transition: all 0.2s ease;
+}
+
+/* Specific hover effects with individual selectors */
+.platform-icon.switch:hover {
+  filter: invert(8%) sepia(78%) saturate(6768%) hue-rotate(351deg) brightness(119%) contrast(111%);
+  transform: scale(1.2);
+}
+
+.platform-icon.playstation:hover {
+  filter: invert(37%) sepia(42%) saturate(941%) hue-rotate(206deg) brightness(95%) contrast(80%);
+  transform: scale(1.2);
+}
+
+.platform-icon.xbox:hover {
+  filter: invert(19%) sepia(97%) saturate(5266%) hue-rotate(102deg) brightness(98%) contrast(90%);
+  transform: scale(1.2);
+}
+
+/* General hover effect for other icons */
+.platform-icon:not(.switch):not(.playstation):not(.xbox):hover {
+  transform: scale(1.2);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+  .platform-icon {
+    height: 32px;
+  }
+  
+  .icon-container {
+    gap: 15px;
+  }
+}
+
 
 
 /* .content-wrapper { */

@@ -1,4 +1,4 @@
-<!-- Portfolio Modals -->
+<!-- Portfolio Modal content -->
 {% for post in site.posts %}
 <div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog"
   aria-hidden="true">
@@ -13,16 +13,16 @@
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-lg-10 col-lg-offset-1">
-              <h2>{{ post.title }}</h2>
-              <hr class="star-div">
+			<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+			  <h2 class="text-center">{{ post.title }}</h2>
+			  <hr class="star-div">
               
 			{% if post.video %}
 			  <div class="video-container text-center video-preview">
 				<div class="video-preview-overlay">
 				  <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
 				  <div class="play-button">
-					<i class="fa fa-play-circle"></i>
+					<i class="fa fa-play"></i>
 				  </div>
 				</div>
 				<video controls class="img-responsive img-centered" style="display:none;">
@@ -30,12 +30,54 @@
 				  Your browser does not support the video tag.
 				</video>
 			  </div>
-              {% else %}
+            {% else %}
                 <div class="text-center">
                   <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
                 </div>
-              {% endif %}
+            {% endif %}
               
+			  
+			  <!-- Platforms Released -->
+{% if post.platforms %}
+  <div class="platform-icons text-center mt-4 mb-4">
+    <h4>Available On</h4>
+    <div class="icon-container">
+      {% for platform in post.platforms %}
+        {% case platform.name %}
+          {% when "apple" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
+            </a>
+          {% when "google" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
+            </a>
+          {% when "playstation" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
+            </a>
+          {% when "steam" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
+            </a>
+          {% when "switch" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
+            </a>
+          {% when "xbox" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
+            </a>
+          {% when "itch" %}
+            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+              <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
+            </a>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+			  
               {% if post.description %}
                 <p>{{ post.description }}</p>
               {% endif %}
