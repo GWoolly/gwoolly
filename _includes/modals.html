@@ -4,19 +4,17 @@
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-body">
-        <div class="close-modal" data-dismiss="modal">
-          <div class="lr">
-            <div class="rl">
-            </div>
-          </div>
+	<div class="close-modal" data-dismiss="modal">
+          <i class="fa-solid fa-close"></i>
         </div>
+      <div class="modal-body">
         <div class="container">
           <div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 			  <h2 class="text-center">{{ post.title }}</h2>
 			  <hr class="star-div">
-              
+            
+			<!-- Video and Preview Image -->
 			{% if post.video %}
 			  <div class="video-container text-center video-preview">
 				<div class="video-preview-overlay">
@@ -37,52 +35,55 @@
             {% endif %}
               
 			  
-			  <!-- Platforms Released -->
-{% if post.platforms %}
-  <div class="platform-icons text-center mt-4 mb-4">
-    <h4>Available On</h4>
-    <div class="icon-container">
-      {% for platform in post.platforms %}
-        {% case platform.name %}
-          {% when "apple" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
-            </a>
-          {% when "google" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
-            </a>
-          {% when "playstation" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
-            </a>
-          {% when "steam" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
-            </a>
-          {% when "switch" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
-            </a>
-          {% when "xbox" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
-            </a>
-          {% when "itch" %}
-            <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-              <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
-            </a>
-        {% endcase %}
-      {% endfor %}
-    </div>
-  </div>
-{% endif %}
-			  
-              {% if post.description %}
+			<!-- Platforms Released -->
+			{% if post.platforms %}
+			  <div class="platform-icons text-center mt-4 mb-4">
+				<h4>Available On</h4>
+				<div class="icon-container">
+				  {% for platform in post.platforms %}
+					{% case platform.name %}
+					  {% when "apple" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
+						</a>
+					  {% when "google" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
+						</a>
+					  {% when "playstation" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
+						</a>
+					  {% when "steam" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
+						</a>
+					  {% when "switch" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
+						</a>
+					  {% when "xbox" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
+						</a>
+					  {% when "itch" %}
+						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+						  <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
+						</a>
+					{% endcase %}
+				  {% endfor %}
+				</div>
+			  </div>
+			{% endif %}
+			
+			
+			<!-- Brief Description -->
+			{% if post.description %}
                 <p>{{ post.description }}</p>
-              {% endif %}
-              
-              <ul class="list-inline item-details">
+            {% endif %}
+            
+			<!-- Additional Info -->
+            <ul class="list-inline item-details">
                 {% if post.client %}
                   <li>Client:
                     <strong>{{ post.client }}</strong>
@@ -101,7 +102,8 @@
                   </li>
                 {% endif %}
               </ul>
-              
+            
+			<!-- Post Markdown Content -->
               {% if post.content %}
                 <div class="content text-center">
                   <div class="content-inner">

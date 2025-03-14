@@ -460,68 +460,26 @@ footer .footer-below {
     margin: 30px 0;
 }
 
-/* .portfolio-modal .close-modal { */
-    /* position: absolute; */
-    /* top: 25px; */
-    /* right: 25px; */
-    /* width: 75px; */
-    /* height: 75px; */
-    /* background-color: transparent; */
-    /* cursor: pointer; */
-/* } */
 
-/* .portfolio-modal .close-modal:hover { */
-    /* opacity: .3; */
-/* } */
 
-/* .portfolio-modal .close-modal .lr { */
-    /* z-index: 1051; */
-    /* width: 1px; */
-    /* height: 75px; */
-    /* margin-left: 35px; */
-    /* background-color: #{{ site.color.secondary }}; */
-    /* -webkit-transform: rotate(45deg); */
-    /* -ms-transform: rotate(45deg); */
-    /* transform: rotate(45deg); */
-/* } */
-
-/* .portfolio-modal .close-modal .lr .rl { */
-    /* z-index: 1052; */
-    /* width: 1px; */
-    /* height: 75px; */
-    /* background-color: #{{ site.color.secondary }}; */
-    /* -webkit-transform: rotate(90deg); */
-    /* -ms-transform: rotate(90deg); */
-    /* transform: rotate(90deg); */
-/* } */
-
+/* Close button for modal */
 .close-modal {
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 5px;
+  right: -10px;
   width: 50px;
   height: 50px;
   cursor: pointer;
   z-index: 1060; /* Ensure it's above other modal elements */
+  font-size: 200%;
 }
 
-.close-modal .lr, .close-modal .rl {
-  position: absolute;
-  z-index: 1061;
-  width: 2px;
-  height: 35px; /* Increase the height for better visibility */
-  background-color: #{{ site.color.secondary }};
+.close-modal:hover {
+	transition: all 0.2s ease;
+	color: #{{ site.color.primary }};
 }
 
-.close-modal .lr {
-  transform: rotate(45deg);
-  margin-left: 24px; /* Center the X */
-}
 
-.close-modal .rl {
-  transform: rotate(-45deg);
-  margin-left: 24px; /* Center the X */
-}
 
 /* Improved mobile responsiveness */
 @media (max-width: 767px) {
@@ -552,49 +510,26 @@ footer .footer-below {
 
 
 
-
-/* hr.star-div { */
-    /* margin: 25px auto 30px; */
-    /* padding: 0; */
-    /* max-width: 250px; */
-    /* border: 0; */
-    /* height: 5px; /* Line thickness */ */
-    /* overflow: visible; */
-    /* color: inherit; /* Inherit text color from the parent */ */
-    /* background: linear-gradient( */
-      /* to right, */
-      /* currentColor 0%, */
-      /* currentColor 40%, */
-      /* transparent 40%, */
-      /* transparent 60%, */
-      /* currentColor 60%, */
-      /* currentColor 100% */
-    /* ); */
-    /* position: relative; */
-    /* --hr-icon: "\f005"; /* Default icon: star */ */
-
-
-/* } */
-
-.star-div {
-  margin: 15px auto 30px;
-  padding: 0;
-  text-align: center;
-  max-width: 250px;
-  border: 0;
-  border-top: solid 5px;
-  border-color: #{{ site.color.primary }};
-  display: block; /* Ensure it's displayed as a block element */
-}
-
+/* Horizontal dividers */
 hr.star-div {
-  margin: 15px auto 30px;
-  padding: 0;
-  text-align: center;
-  max-width: 250px;
-  border: 0;
-  border-top: solid 5px;
-  border-color: #{{ site.color.primary }};
+    margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    height: 5px; /* Line thickness */
+    overflow: visible;
+    color: inherit; /* Inherit text color from the parent */
+    background: linear-gradient(
+      to right,
+      currentColor 0%,
+      currentColor 40%,
+      transparent 40%,
+      transparent 60%,
+      currentColor 60%,
+      currentColor 100%
+    );
+    position: relative;
+    --hr-icon: "\f005"; /* Default icon: star */
 }
 
 hr.star-div:after {
@@ -602,26 +537,25 @@ hr.star-div:after {
     display: inline-block;
     font-family: FontAwesome;
     font-size: 2em;
-    color: currentColor; /* Uses the current (inherited) text color */
+    color: currentColor;
     background: transparent;
     padding: 0 0.25em;
     position: absolute;
     left: 50%;
-    top: -0.7em; /* Adjust as needed */
+    top: -0.7em;
     transform: translateX(-50%);
     z-index: 1;
 }
-
-
-
 
 hr.star-div.bug {
     --hr-icon: "\f188"; /* Bug icon */
 }
 
 hr.star-div.gamepad {
-	--hr-icon: "\f11b"; /* Gamepad icon */
+    --hr-icon: "\f11b"; /* Gamepad icon */
 }
+
+
 
 
 /* Claude markdown post */
@@ -708,24 +642,29 @@ hr.star-div.gamepad {
 }
 
 
-/* Adjust play button size for mobile */
-@media (max-width: 767px) {
-    .play-button {
-        font-size: 3em;
-    }
+/* /* Adjust play button size for mobile */ */
+/* @media (max-width: 767px) { */
+    /* .play-button { */
+        /* font-size: 3em; */
+    /* } */
     
-    .portfolio-modal .modal-content {
-        padding: 30px 15px;
-    }
+	/* /* Center Contents on thin screens */ */
+	/* .portfolio-modal { */
+		/* margin: 0 10px 30px; /* 10px left/right margin */ */
+	/* } */
+	
+    /* /* .portfolio-modal .modal-content { */ */
+        /* /* padding: 30px 15px; */ */
+    /* /* } */ */
     
-    .portfolio-modal .modal-content h2 {
-        font-size: 2em;
-    }
+    /* /* .portfolio-modal .modal-content h2 { */ */
+        /* /* font-size: 2em; */ */
+    /* /* } */ */
     
-    .portfolio-modal .modal-content .content-inner {
-        padding: 0 15px;
-    }
-}
+    /* /* .portfolio-modal .modal-content .content-inner { */ */
+        /* /* padding: 0 15px; */ */
+    /* /* } */ */
+/* } */
 
 /* Further adjustments for very small screens */
 @media (max-width: 480px) {
@@ -733,16 +672,16 @@ hr.star-div.gamepad {
         font-size: 2em;
     }
     
+	/* Center Contents on thin screens */
+	.portfolio-modal {
+		margin: 0 00px 30px; /* 10px left/right margin */
+	}
+	
     .portfolio-modal .close-modal {
         width: 50px;
         height: 50px;
-        top: 15px;
-        right: 15px;
-    }
-    
-    .portfolio-modal .close-modal .lr,
-    .portfolio-modal .close-modal .lr .rl {
-        height: 50px;
+        top: 5em;
+        right: 5em;
     }
 }
 
@@ -786,6 +725,7 @@ hr.star-div.gamepad {
 }
 
 .platform-icon {
+  shape-rendering: auto;
   height: 40px;
   width: auto;
   max-width: 120px;
@@ -812,37 +752,3 @@ hr.star-div.gamepad {
 .platform-icon:not(.switch):not(.playstation):not(.xbox):hover {
   transform: scale(1.2);
 }
-
-/* Mobile responsive adjustments */
-@media (max-width: 767px) {
-  .platform-icon {
-    height: 32px;
-  }
-  
-  .icon-container {
-    gap: 15px;
-  }
-}
-
-
-
-/* .content-wrapper { */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* width: 100%; */
-/* } */
-
-/* .content-inner { */
-  /* display: inline-block; */
-  /* text-align: left; */
-  /* max-width: 100%; */
-/* } */
-
-/* .content-inner h1,  */
-/* .content-inner h2,  */
-/* .content-inner h3,  */
-/* .content-inner p,  */
-/* .content-inner ul,  */
-/* .content-inner ol { */
-  /* text-align: center; */
-/* } */
