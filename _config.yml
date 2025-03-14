@@ -47,8 +47,8 @@ social:
     url: http://github.com/gwoolly
   - title: itch-io
     url: https://gwoolley.itch.io/
-  - title: steam
-    url: https://steamcommunity.com/profiles/76561198057387248/
+  # - title: steam
+    # url: https://steamcommunity.com/profiles/76561198057387248/
   # - title: playstation
     # url: http://github.com/gwoolly
   # - title: xbox

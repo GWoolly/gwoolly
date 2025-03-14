@@ -4,9 +4,7 @@
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-	<div class="close-modal" data-dismiss="modal">
-          <i class="fa-solid fa-close"></i>
-        </div>
+	<div class="close-modal" data-dismiss="modal"></div>
       <div class="modal-body">
         <div class="container">
           <div class="row">
@@ -14,29 +12,61 @@
 			  <h2 class="text-center">{{ post.title }}</h2>
 			  <hr class="star-div">
             
-			<!-- Video and Preview Image -->
-			{% if post.video %}
-			  <div class="video-container text-center video-preview">
-				<div class="video-preview-overlay">
-				  <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-				  <div class="play-button">
-					<i class="fa fa-play"></i>
-				  </div>
-				</div>
-				<video controls class="img-responsive img-centered" style="display:none;">
-				  <source src="{{ post.video }}" type="video/webm">
-				  Your browser does not support the video tag.
-				</video>
-			  </div>
-            {% else %}
-                <div class="text-center">
-                  <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-                </div>
-            {% endif %}
-              
+			
+<!-- Video and Preview Image -->
+{% if post.video %}
+  <div class="video-container text-center video-preview">
+    {% if post.video contains 'youtube.com' or post.video contains 'youtu.be' %}
+      <!-- YouTube Video -->
+      <div class="video-preview-overlay">
+        <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+        <div class="play-button">
+          <i class="fa fa-play"></i>
+        </div>
+      </div>
+      {% assign youtube_id = '' %}
+      {% if post.video contains 'youtube.com/watch?v=' %}
+        {% assign youtube_id = post.video | split: 'watch?v=' | last | split: '&' | first %}
+      {% elsif post.video contains 'youtu.be/' %}
+        {% assign youtube_id = post.video | split: 'youtu.be/' | last %}
+      {% endif %}
+      <iframe style="display:none;" src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elsif post.video contains 'vimeo.com' %}
+      <!-- Vimeo Video -->
+      <div class="video-preview-overlay">
+        <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+        <div class="play-button">
+          <i class="fa fa-play"></i>
+        </div>
+      </div>
+      {% assign vimeo_id = post.video | split: 'vimeo.com/' | last %}
+      <iframe style="display:none;" src="https://player.vimeo.com/video/{{ vimeo_id }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    {% else %}
+      <!-- Standard Video File -->
+      <div class="video-preview-overlay">
+        <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+        <div class="play-button">
+          <i class="fa fa-play"></i>
+        </div>
+      </div>
+      <video controls class="img-responsive img-centered" style="display:none;">
+        <source src="{{ post.video }}" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    {% endif %}
+  </div>
+{% else %}
+  <div class="text-center">
+    <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+  </div>
+{% endif %}		 
 			  
 			<!-- Platforms Released -->
-			{% if post.platforms %}
+			{% if !post.platforms.size == 0 %}
+				<div class="platform-icons text-center mt-4 mb-4">
+				<h4>Platforms Unnanounced</h4>
+				</div>
+			{% else %}
 			  <div class="platform-icons text-center mt-4 mb-4">
 				<h4>Available On</h4>
 				<div class="icon-container">
@@ -79,7 +109,7 @@
 			
 			<!-- Brief Description -->
 			{% if post.description %}
-                <p>{{ post.description }}</p>
+				<p>{{ post.description }}</p>
             {% endif %}
             
 			<!-- Additional Info -->
