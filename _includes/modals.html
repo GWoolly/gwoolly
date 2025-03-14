@@ -1,18 +1,27 @@
 <!-- Portfolio Modal content -->
 {% for post in site.posts %}
-<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog"
-  aria-hidden="true">
+<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-	<div class="close-modal" data-dismiss="modal"></div>
+      <!-- Create a modal-header section for the sticky elements -->
+      <div class="modal-header">
+        <div class="close-modal" data-dismiss="modal"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+              <h2 class="text-center">{{ post.title }}</h2>
+              <hr class="star-div">
+            </div>
+          </div>
+        </div>
+      </div>
+	
+	 <!-- The rest of your content stays in modal-body -->
       <div class="modal-body">
         <div class="container">
           <div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-			  <h2 class="text-center">{{ post.title }}</h2>
-			  <hr class="star-div">
-            
-			
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+              <!-- Your scrollable content here -->
 <!-- Video and Preview Image -->
 {% if post.video %}
   <div class="video-container text-center video-preview">

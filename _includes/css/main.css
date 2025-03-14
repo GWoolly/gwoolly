@@ -492,17 +492,7 @@ footer .footer-below {
     object-fit: contain; /* Ensure content is visible without cropping */
 }
 
-/* Close button styling */
-.close-modal {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    z-index: 1060;
-    font-size: 200%;
-}
+
 
 /* Text content area */
 .portfolio-modal .modal-content .content {
@@ -600,28 +590,44 @@ footer .footer-below {
 
 
 /* === Close button for modal === */
+/* .close-modal { */
+    /* position: absolute; */
+    /* top: 5px; */
+    /* right: -10px; */
+    /* width: 50px; */
+    /* height: 50px; */
+    /* cursor: pointer; */
+    /* z-index: 1060; /* Ensure it's above other modal elements */ */
+    /* font-size: 200%; */
+/* } */
+
+/* Close button styling */
 .close-modal {
     position: absolute;
-    top: 5px;
-    right: -10px;
-    width: 50px;
-    height: 50px;
+    top: 25px;
+    right: 25px;
+    width: 75px;       /* Increase the element size */
+    height: 75px;      /* Increase the element size */
     cursor: pointer;
-    z-index: 1060; /* Ensure it's above other modal elements */
-    font-size: 200%;
+    z-index: 1060;
+    font-size: 500%;   /* Your increased font size */
+    display: flex;     /* Add flex display */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
 
 .close-modal:before {
-	content: "\f00d"; /* FontAwesome Close icon */
+    content: "\f00d"; /* FontAwesome Close icon */
     font-family: "Font Awesome 6 Free"; /* Updated font family */
     font-weight: 900; /* Required for solid icons */
+	font-size: 3rem !important; /* Apply size directly to the icon */
+    line-height: 1;   /* Remove extra line height */
 }
 
 .close-modal:hover {
-	transition: all 0.2s ease;
-	color: #{{ site.color.primary }};
+    transition: all 0.2s ease;
+    color: #{{ site.color.primary }};
 }
-
 
 
 /* /* Improved mobile responsiveness */ */
@@ -699,11 +705,29 @@ hr.star-div.gamepad {
 }
 
 
+/* Add this to your CSS */
+.portfolio-modal .modal-header {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Or whatever background color you need */
+    z-index: 1070; /* Higher than the close button */
+    padding: 10px 0;
+}
+
+/* Then adjust your close button positioning */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    /* Other properties remain the same */
+}
+
 
 
 /* Modal Dialog - Overall container */
 .portfolio-modal .modal-dialog {
-    max-width: 90%;
+    position: relative;
+	max-width: 90%;
     width: 90%;
     margin: 30px auto;
     height: auto;
@@ -712,7 +736,8 @@ hr.star-div.gamepad {
 
 /* Modal Content - The white box */
 .portfolio-modal .modal-content {
-    padding: 30px 0;
+    position: relative;
+	padding: 0 0;
     border: 0;
     border-radius: 0;
     text-align: center;
@@ -727,6 +752,7 @@ hr.star-div.gamepad {
 
 /* Modal Content Inner - Contains all modal elements */
 .portfolio-modal .modal-content .container {
+	position: relative;
     width: 100%;
     max-width: 1200px;
     padding: 0 30px;
