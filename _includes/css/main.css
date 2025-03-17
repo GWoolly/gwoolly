@@ -266,6 +266,7 @@ section.success {
 		--num-cols: 1;
 		--row-height: 100%
 	}
+	
 }
 
 /* Ensure flex/grid container handles items correctly */
@@ -439,17 +440,25 @@ footer .footer-below {
 
 /* Modal Content Inner - Contains all modal elements */
 .portfolio-modal .modal-content .container {
+    position: relative;
     width: 100%;
     max-width: 1200px;
-    padding: 0 30px;
+    padding: 0;
+    flex: 1; /* Take up available space */
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; /* Center the container */
+    box-sizing: border-box; /* Include padding in width calculation */
+    /* overflow-wrap: break-word; /* Allow long words to break */ */
+    /* word-wrap: break-word; /* Legacy version of overflow-wrap */ */
 }
 
 
-/* Title and basic content */
-.portfolio-modal .modal-content h2 {
-    margin: 0 0 20px;
-    font-size: 3em;
-}
+/* /* Title and basic content */ */
+/* .portfolio-modal .modal-content h2 { */
+    /* margin: 0 0 20px; */
+    /* font-size: 3em; */
+/* } */
 
 .portfolio-modal .modal-content img {
     margin-bottom: 30px;
@@ -541,6 +550,9 @@ footer .footer-below {
 .portfolio-modal .modal-content .content-inner h2, 
 .portfolio-modal .modal-content .content-inner h3 {
     text-align: center;
+    margin: 0 0 20px;
+    font-size: 3em;
+	max-width: 100%;
 }
 
 .portfolio-modal .modal-content .content-inner p, 
@@ -690,7 +702,7 @@ footer .footer-below {
 hr.star-div {
     margin: 25px auto 30px;
     padding: 0;
-    max-width: 250px;
+    max-width: 300px;
     border: 0;
     height: 5px; /* Line thickness */
     overflow: visible;
@@ -738,7 +750,9 @@ hr.star-div.gamepad {
     top: 0;
     background-color: white; /* Or whatever background color you need */
     z-index: 1070; /* Higher than the close button */
-    padding: 40px 0;
+    padding-top: 40px;
+	padding-bottom: 0;
+	border-bottom-width: 0; /* Get rid of ugly separator for scrollable content */
 }
 
 /* Then adjust your close button positioning */
@@ -782,7 +796,7 @@ hr.star-div.gamepad {
 	position: relative;
     width: 100%;
     max-width: 1200px;
-    padding: 0 30px;
+    padding: 0 30px, 0, 0;
     flex: 1; /* Take up available space */
     display: flex;
     flex-direction: column;
@@ -794,35 +808,37 @@ hr.star-div.gamepad {
     overflow-y: auto; /* Allow scrolling if content is too tall */
     display: flex;
     flex-direction: column;
+	padding-top: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 767px) {
-    .portfolio-modal .modal-dialog {
-        max-width: 95%;
-        width: 95%;
-        margin: 10px auto;
-        min-height: 90vh; /* Taller on mobile */
-    }
+/* /* Responsive adjustments */ */
+/* @media (max-width: 767px) { */
+    /* .portfolio-modal .modal-dialog { */
+        /* max-width: 95%; */
+        /* width: 95%; */
+        /* margin: 10px auto; */
+        /* min-height: 90vh; /* Taller on mobile */ */
+    /* } */
     
-    .portfolio-modal .modal-content {
-        min-height: 90vh; /* Match the dialog height */
-    }
-}
+    /* .portfolio-modal .modal-content { */
+        /* min-height: 90vh; /* Match the dialog height */ */
+    /* } */
+/* } */
 
-/* Further adjustments for very small screens */
-@media (max-width: 480px) {
-    .portfolio-modal .modal-dialog {
-        max-width: 100%;
-        width: 100%;
-        margin: 0;
-        min-height: 100vh; /* Full height on very small screens */
-    }
+/* /* Further adjustments for very small screens */ */
+/* @media (max-width: 480px) { */
+    /* .portfolio-modal .modal-dialog { */
+        /* max-width: 100%; */
+        /* width: 100%; */
+        /* margin: 0; */
+        /* min-height: 100vh; /* Full height on very small screens */ */
+    /* } */
     
-    .portfolio-modal .modal-content {
-        min-height: 100vh; /* Full height on very small screens */
-    }
-}
+    /* .portfolio-modal .modal-content { */
+        /* min-height: 100vh; /* Full height on very small screens */ */
+    /* } */
+/* } */
+/* --- */
 
 /* @media (min-width: 768px) { */
     /* .portfolio-modal .modal-dialog { */
