@@ -711,7 +711,7 @@ hr.star-div.gamepad {
     top: 0;
     background-color: white; /* Or whatever background color you need */
     z-index: 1070; /* Higher than the close button */
-    padding: 10px 0;
+    padding: 40px 0;
 }
 
 /* Then adjust your close button positioning */
