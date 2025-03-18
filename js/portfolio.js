@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
       setCookie("loggedIn", "true", COOKIE_LIFESPAN_DAYS); // Expires in defined number of days
       showRestrictedContent();
     } else {
-      errorMessage.style.display = "block"; // Show error message
+      errorMessage.style.visibility = "visible"; // Show error message if visibility was hidden
       passwordInput.value = ""; // Clear the input field after wrong attempt
       passwordInput.focus(); // Focus back on the password field
     }
