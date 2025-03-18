@@ -16,117 +16,115 @@
         </div>
       </div>
 	
-	 <!-- The rest of your content stays in modal-body -->
+      <!-- The rest of your content stays in modal-body -->
       <div class="modal-body">
         <div class="container">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
               <!-- Your scrollable content here -->
-<!-- Video and Preview Image -->
-<!-- Video and Preview Image -->
-{% if post.video %}
-  <div class="video-container text-center video-preview">
-    {% if post.video contains 'youtube.com' or post.video contains 'youtu.be' %}
-      <!-- YouTube Video -->
-      <div class="video-preview-overlay">
-        <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-        <div class="play-button">
-          <i class="fa fa-play"></i>
-        </div>
-      </div>
-      {% assign youtube_id = '' %}
-      {% if post.video contains 'youtube.com/watch?v=' %}
-        {% assign youtube_id = post.video | split: 'watch?v=' | last | split: '&' | first %}
-      {% elsif post.video contains 'youtu.be/' %}
-        {% assign youtube_id = post.video | split: 'youtu.be/' | last %}
-      {% endif %}
-      <iframe style="display:none;" src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    {% elsif post.video contains 'vimeo.com' %}
-      <!-- Vimeo Video -->
-      <div class="video-preview-overlay">
-        <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-        <div class="play-button">
-          <i class="fa fa-play"></i>
-        </div>
-      </div>
-      {% assign vimeo_id = post.video | split: 'vimeo.com/' | last %}
-      <iframe style="display:none;" src="https://player.vimeo.com/video/{{ vimeo_id }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-    {% else %}
-      <!-- Standard Video File -->
-      <div class="video-preview-overlay">
-        <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-        <div class="play-button">
-          <i class="fa fa-play"></i>
-        </div>
-      </div>
-      <video controls class="img-responsive img-centered" style="display:none;">
-        <source src="{{ post.video }}" type="video/webm">
-        Your browser does not support the video tag.
-      </video>
-    {% endif %}
-  </div>
-{% else %}
-  <!-- Fallback Image -->
-  <div class="text-center">
-    <div class="video-container">
-      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-    </div>
-  </div>
-{% endif %}	 
+              <!-- Video and Preview Image -->
+              {% if post.video %}
+                <div class="video-container text-center video-preview">
+                  {% if post.video contains 'youtube.com' or post.video contains 'youtu.be' %}
+                    <!-- YouTube Video -->
+                    <div class="video-preview-overlay">
+                      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                      <div class="play-button">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
+                    {% assign youtube_id = '' %}
+                    {% if post.video contains 'youtube.com/watch?v=' %}
+                      {% assign youtube_id = post.video | split: 'watch?v=' | last | split: '&' | first %}
+                    {% elsif post.video contains 'youtu.be/' %}
+                      {% assign youtube_id = post.video | split: 'youtu.be/' | last %}
+                    {% endif %}
+                    <iframe style="display:none;" src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  {% elsif post.video contains 'vimeo.com' %}
+                    <!-- Vimeo Video -->
+                    <div class="video-preview-overlay">
+                      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                      <div class="play-button">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
+                    {% assign vimeo_id = post.video | split: 'vimeo.com/' | last %}
+                    <iframe style="display:none;" src="https://player.vimeo.com/video/{{ vimeo_id }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  {% else %}
+                    <!-- Standard Video File -->
+                    <div class="video-preview-overlay">
+                      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                      <div class="play-button">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
+                    <video controls class="img-responsive img-centered" style="display:none;">
+                      <source src="{{ post.video }}" type="video/webm">
+                      Your browser does not support the video tag.
+                    </video>
+                  {% endif %}
+                </div>
+              {% else %}
+                <!-- Fallback Image -->
+                <div class="text-center">
+                  <div class="video-container">
+                    <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                  </div>
+                </div>
+              {% endif %}	 
 			  
-			<!-- Platforms Released -->
-			{% if !post.platforms.size == 0 %}
-				<div class="platform-icons text-center mt-4 mb-4">
-				<h4>Platforms Unnanounced</h4>
-				</div>
-			{% else %}
-			  <div class="platform-icons text-center mt-4 mb-4">
-				<h4>Available On</h4>
-				<div class="icon-container">
-				  {% for platform in post.platforms %}
-					{% case platform.name %}
-					  {% when "apple" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
-						</a>
-					  {% when "google" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
-						</a>
-					  {% when "playstation" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
-						</a>
-					  {% when "steam" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
-						</a>
-					  {% when "switch" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
-						</a>
-					  {% when "xbox" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
-						</a>
-					  {% when "itch" %}
-						<a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-						  <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
-						</a>
-					{% endcase %}
-				  {% endfor %}
-				</div>
-			  </div>
-			{% endif %}
+              <!-- Platforms Released -->
+              {% if post.platforms.size == 0 %}
+                <div class="platform-icons text-center mt-4 mb-4">
+                  <h4>Platforms Unannounced</h4>
+                </div>
+              {% else %}
+                <div class="platform-icons text-center mt-4 mb-4">
+                  <h4>Available On</h4>
+                  <div class="icon-container">
+                    {% for platform in post.platforms %}
+                      {% case platform.name %}
+                        {% when "apple" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
+                          </a>
+                        {% when "google" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
+                          </a>
+                        {% when "playstation" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
+                          </a>
+                        {% when "steam" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
+                          </a>
+                        {% when "switch" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
+                          </a>
+                        {% when "xbox" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
+                          </a>
+                        {% when "itch" %}
+                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+                            <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
+                          </a>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
 			
-			
-			<!-- Brief Description -->
-			{% if post.description %}
-				<p>{{ post.description }}</p>
-            {% endif %}
+              <!-- Brief Description -->
+              {% if post.description %}
+                <p>{{ post.description }}</p>
+              {% endif %}
             
-			<!-- Additional Info -->
-            <ul class="list-inline item-details">
+              <!-- Additional Info -->
+              <ul class="list-inline item-details">
                 {% if post.client %}
                   <li>Client:
                     <strong>{{ post.client }}</strong>
@@ -146,34 +144,42 @@
                 {% endif %}
               </ul>
             
-			
-			<!-- Secret stuff here -->
-			
-			<!-- Password Prompt -->
-<div id="password-container">
-  <label for="password-input">Enter Password:</label>
-  <input type="password" id="password-input" />
-  <button id="submit-password">Submit</button>
-  <p id="error-message" style="color: red; display: none;">Incorrect password. Please try again.</p>
-</div>
+              <hr class="star-div">
 
-<!-- Restricted Content -->
-<div id="restricted-content" style="display: none;">
-  			<!-- Post Markdown Content -->
-              {% if post.content %}
+              {% if post.secret == true %}
+                <!-- Password Prompt -->
+                <div id="password-container">
+                  <div class="text-center"> 
+                    <p>🙈🙉🙊</p>
+                    <p>Sorry! But you need permission to see this super secret content!</p>
+                  </div>
+                  <label for="password-input">Enter Password:</label>
+                  <input type="password" id="password-input" />
+                  <button id="submit-password">Submit</button>
+                  <p id="error-message" style="color: red; display: none;">Incorrect password. Please try again.</p>
+                </div>
+                <!-- Restricted Content -->
+                <div id="restricted-content" style="display: none;">
+                  <!-- Post Markdown Content -->
+                  <div class="content text-center">
+                    <div class="content-inner">
+                      {{ post.content | markdownify }}
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <!-- Post Markdown Content for non-secret posts -->
                 <div class="content text-center">
                   <div class="content-inner">
                     {{ post.content | markdownify }}
                   </div>
                 </div>
               {% endif %}
-              
+
               <button type="button" class="btn btn-default" data-dismiss="modal">
                 <i class="fa fa-times"></i> Close
               </button>
             </div>
-</div>
-			
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 ---
 layout: default
 modal-id: Goodboy-Galaxy
+secret: false
 date: 2024-10-25
 img: GoodboyGalaxy.jpg
 video: https://video.fastly.steamstatic.com/store_trailers/257064118/movie480_vp9.webm?t=1728649874

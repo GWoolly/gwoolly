@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const ACCESS_URL_PARAM = "access"; // The URL parameter that grants access
   const ACCESS_PARAM_VALUE = "true"; // The value that must be present in the URL parameter to grant access
 
-  const correctPassword = "showme"; // The password you want users to enter
+  const correctPassword = "prettyplease"; // The password you want users to enter
   const passwordInput = document.getElementById("password-input");
   const submitButton = document.getElementById("submit-password");
   const errorMessage = document.getElementById("error-message");
