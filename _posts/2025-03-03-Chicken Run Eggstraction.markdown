@@ -1,14 +1,23 @@
 ---
 layout: default
 modal-id: CR2
-date: 2025-03-03
+title: "Chicken Run: Eggstraction"
+category: 
+  - QA
+  - Design
+
 img: CR2.png
-video: https://www.youtube.com/watch?v=EBDOVwlRBxo
 alt: Chicken Run 2 Eggstraction
+video: https://www.youtube.com/watch?v=EBDOVwlRBxo
+
 release: TBA
-platforms: []
-client: Aardman Animations / Netflix
-category: QA Testing
+platforms:
+  # - name: itch
+    # url: https://goodboygalaxy.itch.io/goodboy-galaxy-gba
+client: "Aardman Animations / Netflix"
+
 description: I'm currently wrapping up the final touches on this game as QA Lead!
-link: https://www.aardman.com/film-tv-games/chicken-run-eggstraction/
+
+secret: true
 ---
+![test](img/portfolio/CR2.png)

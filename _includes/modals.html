@@ -23,6 +23,7 @@
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
               <!-- Your scrollable content here -->
 <!-- Video and Preview Image -->
+<!-- Video and Preview Image -->
 {% if post.video %}
   <div class="video-container text-center video-preview">
     {% if post.video contains 'youtube.com' or post.video contains 'youtu.be' %}
@@ -65,10 +66,13 @@
     {% endif %}
   </div>
 {% else %}
+  <!-- Fallback Image -->
   <div class="text-center">
-    <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+    <div class="video-container">
+      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+    </div>
   </div>
-{% endif %}		 
+{% endif %}	 
 			  
 			<!-- Platforms Released -->
 			{% if !post.platforms.size == 0 %}
@@ -142,7 +146,20 @@
                 {% endif %}
               </ul>
             
-			<!-- Post Markdown Content -->
+			
+			<!-- Secret stuff here -->
+			
+			<!-- Password Prompt -->
+<div id="password-container">
+  <label for="password-input">Enter Password:</label>
+  <input type="password" id="password-input" />
+  <button id="submit-password">Submit</button>
+  <p id="error-message" style="color: red; display: none;">Incorrect password. Please try again.</p>
+</div>
+
+<!-- Restricted Content -->
+<div id="restricted-content" style="display: none;">
+  			<!-- Post Markdown Content -->
               {% if post.content %}
                 <div class="content text-center">
                   <div class="content-inner">
@@ -155,6 +172,8 @@
                 <i class="fa fa-times"></i> Close
               </button>
             </div>
+</div>
+			
           </div>
         </div>
       </div>
