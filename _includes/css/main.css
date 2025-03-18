@@ -177,6 +177,9 @@ section.success {
 }
 
 
+
+/* ===== PORTFOLIO GRID ===== */
+
 /* Set up the portfolio item as a responsive block */
 #portfolio .portfolio-item {
   width: 100%; /* Full width of flex-item */
@@ -261,51 +264,107 @@ section.success {
 	object-fit: cover;
 }
 
+/* Force Portfolio to be a single column on mobile devices */
 @media (max-width: 1024px) {
 	.portfolio-flex-row  {
 		--num-cols: 1;
 		--row-height: 100%
 	}
-	
 }
 
-/* Ensure flex/grid container handles items correctly */
-/* .portfolio-flex-row {	 */
-  /* /* display: grid; */ */
-  /* /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Responsive columns */ */ */
-  /* /* gap: 10px; /* Equal horizontal and vertical gaps */ */ */
-  /* /* margin: 0; */ */
-  /* /* padding: 0; */ */
-  /* /* list-style: none; /* Optional reset */ */ */
+/* Crop About Image on Mobile */
+@media (max-width: 1200px) {
+  .about-img img {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Ensures a 16:9 crop */
+    object-fit: cover; /* Crop to fill the area */
+    object-position: center 30%; /* Adjust focus x, y position*/
+  }
+}
+
+/* Add padding to the About-me text */
+/* .about-container { */
+	/* padding: 15px; */
+	/* gap: 15px; */
+	/* columns: 2; */
 /* } */
 
-/* Optional: Control how many items per row */
-/* .portfolio-flex-item { */
-  /* position: relative; */
-  /* aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */ */
-  /* overflow: hidden; */
-  /* background: rgb(255,255,255,1); /* Fallback color */ */
-  /* /* background: #{{ site.colour.background }}; /* Fallback color */ */ */
+/* .about-img { */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.about-container {
+    display: flex;
+    align-items: center; /* Centers everything vertically */
+}
+
+.about-img {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures the image is centered */
+	padding: 15px;
+}
+.about-img img {
+	width: 100%;
+	max-width: 1200px;
+	height: auto;
+}
+
+/* .about-image { */
+    /* max-width: 100%; */
+    /* height: auto; */
+    /* display: block; /* Prevents extra spacing issues */ */
 /* } */
+
+
+/* ===== BUTTONS ===== */
+
+/* Add margin to the Connect button in the About section */
+.btn-about {
+    display: inline-block;
+    margin-top: 50px; Adds space above
+}
+
+/* Text button with icon */
+.btn-text {
+	padding: 10px 20px; /* Adds padding between button content and border */
+	gap: 20px; /* Add gap between text and icon */
+	/* text-transform: uppercase; */
+    /* font-family: inherit; */
+    /* font-weight: 700; */
+}
 
 .btn-outline {
-    margin-top: 15px;
-    border: solid 2px #fff;
+    display: inline-flex;
+	align-items: center; */
+    justify-content: center;
+	
+	border: solid 2px #fff; /* White border */
     font-size: 20px;
-    color: #fff;
-    background: 0 0;
+    color: #fff; /* White text */
+    background: transparent; /* Transparent background */
     transition: all .3s ease-in-out;
+	gap: 20px;
+    text-decoration: none; /* Removes underline if any */
 }
 
+/* Hover effect */
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-    border: solid 2px #fff;
-    color: #{{ site.color.primary }};
-    background: #fff;
+    border: solid 2px #fff; /* Keep white border or change if needed */
+    color: #{{ site.color.primary }}; /* Change text to site primary color */
+    background: #fff; /* White background */
+    text-decoration: none;
 }
 
+
+
+/* ===== CONTACT FORM ===== */
+ 
 .floating-label-form-group {
     position: relative;
     margin-bottom: 0;
@@ -362,6 +421,9 @@ form .row:first-child .floating-label-form-group {
     border-top: 1px solid #eee;
 }
 
+
+
+/* ===== FOOTER ===== */
 footer {
     color: #fff;
 }
@@ -423,19 +485,23 @@ footer .footer-below {
 }
 
 
-/* ===== MODAL STYLES - REVISED ===== */
+
+/* ===== PORTFOLIO - MODAL CONTENT STYLES ===== */
 
 /* Modal Content - The white box */
 .portfolio-modal .modal-content {
-    padding: 30px 0;
+    position: relative;
+	padding: 0 0;
     border: 0;
     border-radius: 0;
     text-align: center;
     background-clip: border-box;
-    box-shadow: none;
-    min-height: auto; /* Remove fixed height */
-    height: auto; /* Auto height based on content */
+    box-shadow: 7px 9px 2px 0px #0000007a;
+    /* height: auto; */
+    /* min-height: 80vh; /* Match the dialog height */ */
     overflow: visible; /* Allow content to determine size */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Modal Content Inner - Contains all modal elements */
@@ -453,13 +519,7 @@ footer .footer-below {
     /* word-wrap: break-word; /* Legacy version of overflow-wrap */ */
 }
 
-
-/* /* Title and basic content */ */
-/* .portfolio-modal .modal-content h2 { */
-    /* margin: 0 0 20px; */
-    /* font-size: 3em; */
-/* } */
-
+/* Image styling for all within the modal */
 .portfolio-modal .modal-content img {
     margin-bottom: 30px;
     max-width: 100%;
@@ -468,7 +528,7 @@ footer .footer-below {
 
 
 
-/* Video preview overlay and play button */
+/* Video preview overlay and make container a hotspot for the play button */
 .video-preview-overlay {
     width: 100%;
     max-width: 100%;
@@ -561,92 +621,12 @@ footer .footer-below {
     text-align: left;
 }
 
-
-
-
-/* === OLD === */
-
-/* .portfolio-modal .modal-content { */
-    /* padding: 100px 0; */
-    /* min-height: 100%; */
-    /* border: 0; */
-    /* border-radius: 0; */
-    /* text-align: center; */
-    /* background-clip: border-box; */
-    /* -webkit-box-shadow: none; */
-    /* box-shadow: none; */
-/* } */
-
-/* /* Enhanced Modal Responsiveness */ */
-/* .portfolio-modal .modal-content { */
-    /* padding: 50px 0; /* Reduced padding for mobile */ */
-    /* width: 100%; */
-    /* overflow-x: hidden; */
-/* } */
-
-/* /* Responsive video container */ */
-/* .portfolio-modal .video-container { */
-    /* position: relative; */
-    /* padding-bottom: 56.25%; /* 16:9 aspect ratio */ */
-    /* height: 0; */
-    /* overflow: hidden; */
-    /* max-width: 100%; */
-    /* margin: 0 auto 30px; */
-/* } */
-
-/* .portfolio-modal .video-container iframe, */
-/* .portfolio-modal .video-container video { */
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* width: 100%; */
-    /* height: 100%; */
-/* } */
-
-/* /* Responsive video preview */ */
-/* .video-preview-overlay { */
-    /* position: relative; */
-    /* width: 100%; */
-    /* max-width: 100%; */
-    /* margin: 0 auto; */
-/* } */
-
-
-
-/* .portfolio-modal .modal-content h2 { */
-    /* margin: 0; */
-    /* font-size: 3em; */
-/* } */
-
-/* .portfolio-modal .modal-content img { */
-    /* margin-bottom: 30px; */
-/* } */
-
-/* .portfolio-modal .modal-content .item-details { */
-    /* margin: 30px 0; */
-/* } */
-
-
-
-/* === Close button for modal === */
-/* .close-modal { */
-    /* position: absolute; */
-    /* top: 5px; */
-    /* right: -10px; */
-    /* width: 50px; */
-    /* height: 50px; */
-    /* cursor: pointer; */
-    /* z-index: 1060; /* Ensure it's above other modal elements */ */
-    /* font-size: 200%; */
-/* } */
-
 /* Close button styling */
 .close-modal {
     position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 75px;       /* Increase the element size */
-    height: 75px;      /* Increase the element size */
+    top: 0;
+    right: 0;
+	padding: 10px 15px;/* Square padding around X icon */
     cursor: pointer;
     z-index: 1060;
     font-size: 500%;   /* Your increased font size */
@@ -669,21 +649,8 @@ footer .footer-below {
 }
 
 
-/* /* Improved mobile responsiveness */ */
-/* @media (max-width: 767px) { */
-  /* .close-modal { */
-    /* top: 15px; */
-    /* right: 15px; */
-    /* width: 40px; */
-    /* height: 40px; */
-  /* } */
-  
-  /* .close-modal .lr, .close-modal .rl { */
-    /* height: 30px; */
-    /* margin-left: 19px; */
-  /* } */
-/* } */
 
+/* ===== HEADER - NAVBAR ===== */
 .navbar-nav>.active>a {
     background-color: #{{ site.color.secondary-dark }} !important;
 }
@@ -697,6 +664,7 @@ footer .footer-below {
 
 
 
+/* ===== CUSTOM HORIZONTAL DIVIDERS ===== */
 
 /* Horizontal dividers */
 hr.star-div {
@@ -744,6 +712,8 @@ hr.star-div.gamepad {
 }
 
 
+
+/* ===== PORTFOLIO - STYLING ===== */
 /* Add this to your CSS */
 .portfolio-modal .modal-header {
     position: sticky;
@@ -753,14 +723,6 @@ hr.star-div.gamepad {
     padding-top: 40px;
 	padding-bottom: 0;
 	border-bottom-width: 0; /* Get rid of ugly separator for scrollable content */
-}
-
-/* Then adjust your close button positioning */
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    /* Other properties remain the same */
 }
 
 
@@ -775,21 +737,7 @@ hr.star-div.gamepad {
     min-height: 80vh; /* Minimum height of 80% of viewport height */
 }
 
-/* Modal Content - The white box */
-.portfolio-modal .modal-content {
-    position: relative;
-	padding: 0 0;
-    border: 0;
-    border-radius: 0;
-    text-align: center;
-    background-clip: border-box;
-    box-shadow: none;
-    height: auto;
-    min-height: 80vh; /* Match the dialog height */
-    overflow: visible; /* Allow content to determine size */
-    display: flex;
-    flex-direction: column;
-}
+
 
 /* Modal Content Inner - Contains all modal elements */
 .portfolio-modal .modal-content .container {
@@ -811,67 +759,6 @@ hr.star-div.gamepad {
 	padding-top: 0;
 }
 
-/* /* Responsive adjustments */ */
-/* @media (max-width: 767px) { */
-    /* .portfolio-modal .modal-dialog { */
-        /* max-width: 95%; */
-        /* width: 95%; */
-        /* margin: 10px auto; */
-        /* min-height: 90vh; /* Taller on mobile */ */
-    /* } */
-    
-    /* .portfolio-modal .modal-content { */
-        /* min-height: 90vh; /* Match the dialog height */ */
-    /* } */
-/* } */
-
-/* /* Further adjustments for very small screens */ */
-/* @media (max-width: 480px) { */
-    /* .portfolio-modal .modal-dialog { */
-        /* max-width: 100%; */
-        /* width: 100%; */
-        /* margin: 0; */
-        /* min-height: 100vh; /* Full height on very small screens */ */
-    /* } */
-    
-    /* .portfolio-modal .modal-content { */
-        /* min-height: 100vh; /* Full height on very small screens */ */
-    /* } */
-/* } */
-/* --- */
-
-/* @media (min-width: 768px) { */
-    /* .portfolio-modal .modal-dialog { */
-        /* max-width: 80%; */
-        /* width: 80%; */
-    /* } */
-/* } */
-
-
-
-/* Add this for maintaining aspect ratio if needed */
-/* .portfolio-modal .modal-body { */
-    /* position: relative; */
-    /* width: 100%; */
-    /* For portrait/square content */
-    /* padding-bottom: 100%; Creates 1:1 aspect ratio */
-    /* height: 0; */
-    /* overflow: hidden; */
-/* } */
-
-/* For landscape content */
-/* .portfolio-modal .modal-body.landscape { */
-    /* padding-bottom: 56.25%; /* Creates 16:9 aspect ratio */
-/* } */
-
-/* .portfolio-modal .modal-body > * { */
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* width: 100%; */
-    /* height: 100%; */
-/* } */
-
 .portfolio-modal .modal-content .content-inner {
   display: inline-block;
   text-align: left;
@@ -887,6 +774,8 @@ hr.star-div.gamepad {
   text-align: center;
 }
 
+
+/* ===== PORTFOLIO - MEDIA CONTENT ===== */
 
 .video-preview {
   position: relative;
@@ -907,13 +796,6 @@ hr.star-div.gamepad {
   pointer-events: none; /* Allows clicks to pass through to underlying elements */
 }
 
-/* /* Container for the video preview */ */
-/* .video-preview-overlay { */
-  /* position: relative; */
-  /* cursor: pointer; /* Indicates clickable area */ */
-/* } */
-
-
 .video-preview-overlay {
     position: relative;
     width: 100%;
@@ -932,68 +814,6 @@ hr.star-div.gamepad {
     display: block;
 }
 
-.play-button {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4em;
-    color: rgba(255, 255, 255, 1.0);
-    filter: drop-shadow(7px 3px 1px rgba(0, 0, 0, 0.9));
-    transition: all .2s ease;
-    pointer-events: none;
-}
-
-.video-preview-overlay:hover .play-button {
-    color: #{{ site.color.primary }};
-    transform: translate(-50%, -50%) scale(1.5);
-    filter: drop-shadow(7px 3px 2px rgba(0, 0, 0, 0.75));
-}
-
-
-/* /* Adjust play button size for mobile */ */
-/* @media (max-width: 767px) { */
-    /* .play-button { */
-        /* font-size: 3em; */
-    /* } */
-    
-	/* /* Center Contents on thin screens */ */
-	/* .portfolio-modal { */
-		/* margin: 0 10px 30px; /* 10px left/right margin */ */
-	/* } */
-	
-    /* /* .portfolio-modal .modal-content { */ */
-        /* /* padding: 30px 15px; */ */
-    /* /* } */ */
-    
-    /* /* .portfolio-modal .modal-content h2 { */ */
-        /* /* font-size: 2em; */ */
-    /* /* } */ */
-    
-    /* /* .portfolio-modal .modal-content .content-inner { */ */
-        /* /* padding: 0 15px; */ */
-    /* /* } */ */
-/* } */
-
-/* Further adjustments for very small screens */
-@media (max-width: 480px) {
-    .play-button {
-        font-size: 2em;
-    }
-    
-	/* Center Contents on thin screens */
-	.portfolio-modal {
-		margin: 0 00px 30px; /* 10px left/right margin */
-	}
-	
-    /* .portfolio-modal .close-modal { */
-        /* width: 50px; */
-        /* height: 50px; */
-        /* top: 5em; */
-        /* right: 5em; */
-    /* } */
-}
 
 /* Target play button when container is hovered */
 .video-preview-overlay:hover .play-button {
@@ -1002,15 +822,8 @@ hr.star-div.gamepad {
   filter: drop-shadow(7px 3px 2px rgba(0, 0, 0, 0.75));
 }
 
-/* Maintain hover effects on the button itself */
-.play-button:hover {
-  color: #{{ site.color.primary }};
-  transform: translate(-50%, -50%) scale(1.5);
-  filter: drop-shadow(7px 3px 4px rgba(0, 0, 0, 0.75));
-}
 
-
-// Modal Content
+/* ===== Modal - PLATFORM ICONS ===== */
 .platform-icons {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1068,10 +881,8 @@ hr.star-div.gamepad {
   transform: scale(1.2);
 }
 
-
-
-
-/* Specific hover effects with individual selectors */
+/* ===== CUSTOM COLOURS FOR PLATFORMS ===== */
+/* Use this tool to convert hex/rgb colours to a css color filter: https://angel-rs.github.io/css-color-filter-generator/ */
 .platform-icon.switch:hover {
   filter: invert(8%) sepia(78%) saturate(6768%) hue-rotate(351deg) brightness(119%) contrast(111%);
 }

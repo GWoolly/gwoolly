@@ -7,28 +7,27 @@
         <hr class="star-div">
       </div>
     </div>
-    <div class="row d-flex align-items-center">
-      <!-- Image Column -->
-      <div class="col-lg-4 text-center d-flex align-items-center justify-content-center">
-        <img src="img/about.jpg" alt="Grant" class="img-fluid rounded" style="max-width: 100%; height: auto;">
-      </div>
-      <!-- Text Column -->
-      <div class="col-lg-8">
-        <p>Hello and welcome!</p>
-        <p>I’m Grant, a video game developer from the historic naval city of Portsmouth.</p>
-        <p>I help developers build high-quality, engaging game experiences by ensuring smooth, bug-free gameplay, streamlining testing with custom automation tools, and exploring innovative design solutions.</p>
-        <p>With almost a decade in the games industry, I’ve ventured around the UK, collaborating with some of the most knowledgeable creative teams at Aardman, Jagex, Rare, and Dlala Studios to name a few! These experiences have not only shaped my technical skills but also sparked my passion for delving deeper into game design.</p>
-        <p>When I’m not vanquishing bugs, refining game mechanics, or serving cheesy jokes, you can find me experimenting with level design on my personal projects, adventuring in the countryside, or cultivating chillies and other fresh veggies.</p>
-        <p>I currently serve as the Lead QA Tester at Aardman Animations on Chicken Run 2: Eggstraction, a dynamic project in partnership with Netflix.</p>
-        <p>Want to work together? I’d love to hear from you!</p>
-      </div>
-    </div>
-    <!-- <div class="row"> -->
-      <!-- <div class="col-lg-8 col-lg-offset-2 text-center"> -->
-        <!-- <a href="https://github.com/jeromelachaud/freelancer-theme" class="btn btn-lg btn-outline"> -->
-          <!-- <i class="fa fa-download"></i> Download Theme -->
-        <!-- </a> -->
-      <!-- </div> -->
-    <!-- </div> -->
+<div class="row d-flex align-items-center about-container">
+  <!-- Image Column -->
+  <div class="col-lg-4 d-flex align-items-center justify-content-center about-img">
+    <img src="img/about.jpg" alt="Grant" class="img-fluid rounded about-image" style="max-width: 100%; height: auto;">
+  </div>
+  <!-- Text Column -->
+  <div class="col-lg-8 about-text">
+    {% capture about_content %}{% include about.md %}{% endcapture %}
+    {{ about_content | markdownify }}
+  </div>
+</div>
+
+    
+    <!-- Button Row -->
+    <div class="row">
+  <div class="col-lg-12 text-center">
+    <a href="https://www.linkedin.com/in/grantwoolley" class="btn btn-lg btn-outline btn-text btn-about">
+      <i class="fa-brands fa-linkedin"></i> Connect With Me
+    </a>
+  </div>
+</div>
+
   </div>
 </section>

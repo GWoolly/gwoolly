@@ -3,11 +3,15 @@
 {% include head.html %}
 
 <body id="page-top" class="index">
+  <!-- Header -->
   {% include nav.html %}
   {% include header.html %}
+  
+  <!-- Content -->
   {% include portfolio_grid.html %}
   {% include about.html %}
 
+<!-- Contact -->
   {% if site.contact == "static" %}
   {% include contact_static.html %}
   {% elsif site.contact == "disqus" %}
@@ -16,6 +20,7 @@
   {% include contact.html %}
   {% endif %}
 
+<!-- Other -->
   {% include footer.html %}
   {% include modals.html %}
   {% include js.html %}
