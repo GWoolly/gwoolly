@@ -33,12 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
   /*
   const COOKIE_LIFESPAN_DAYS = {{ nda.cookie_duration }}; // The cookie lifespan in days
   const ACCESS_URL_PARAM = "{{ nda.param }}"; // The URL parameter that grants access
-  const ACCESS_PARAM_VALUE = "true"; // The value that must be present in the URL parameter to grant access
   const correctPassword = "{{ nda.password }}"; // The password you want users to enter
   /*/
   const COOKIE_LIFESPAN_DAYS = 7; // The cookie lifespan in days
   const ACCESS_URL_PARAM = "nda"; // The URL parameter that grants access
-  // const ACCESS_PARAM_VALUE = "true"; // The value that must be present in the URL parameter to grant access
   const correctPassword = "please"; // The password you want users to enter
   //*/
   const passwordInput = document.getElementById("password-input");
