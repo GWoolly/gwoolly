@@ -9,6 +9,12 @@ keywords: "Quality assurance, QA Tester, QA Testing, games testing, games tester
 skills: "Quality Assurance - Games Design - Pixel Art"
 meta_author: Woolley Grant
 
+# Password Protected Content
+nda: 
+    password: "please"
+    cookie_duration: 2
+    param: "nda"
+
 # Google webmaster tools
 google_verify:
 

@@ -29,12 +29,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Secret projects
 document.addEventListener("DOMContentLoaded", function() {
-  // Constants to easily adjust the cookie lifespan and the expected URL parameter
-  const COOKIE_LIFESPAN_DAYS = 7; // The cookie lifespan in days
-  const ACCESS_URL_PARAM = "access"; // The URL parameter that grants access
+// Constants to easily adjust the cookie lifespan and the expected URL parameter
+  /*
+  const COOKIE_LIFESPAN_DAYS = {{ nda.cookie_duration }}; // The cookie lifespan in days
+  const ACCESS_URL_PARAM = "{{ nda.param }}"; // The URL parameter that grants access
   const ACCESS_PARAM_VALUE = "true"; // The value that must be present in the URL parameter to grant access
-
-  const correctPassword = "prettyplease"; // The password you want users to enter
+  const correctPassword = "{{ nda.password }}"; // The password you want users to enter
+  /*/
+  const COOKIE_LIFESPAN_DAYS = 7; // The cookie lifespan in days
+  const ACCESS_URL_PARAM = "nda"; // The URL parameter that grants access
+  // const ACCESS_PARAM_VALUE = "true"; // The value that must be present in the URL parameter to grant access
+  const correctPassword = "please"; // The password you want users to enter
+  //*/
   const passwordInput = document.getElementById("password-input");
   const submitButton = document.getElementById("submit-password");
   const errorMessage = document.getElementById("error-message");
@@ -47,11 +53,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Check if the URL contains the specific parameter to grant access
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get(ACCESS_URL_PARAM) === ACCESS_PARAM_VALUE) {
-    setCookie("loggedIn", "true", COOKIE_LIFESPAN_DAYS); // Expires in defined number of days
-    showRestrictedContent(); // Show restricted content directly
-  }
+	const urlParams = new URLSearchParams(window.location.search);
+	if (urlParams.has(ACCESS_URL_PARAM)) {
+	  setCookie("loggedIn", "true", COOKIE_LIFESPAN_DAYS);
+	  showRestrictedContent();
+	}
+
 
   // Handle password submission when the user clicks the submit button
   submitButton.addEventListener("click", handlePasswordSubmission);
