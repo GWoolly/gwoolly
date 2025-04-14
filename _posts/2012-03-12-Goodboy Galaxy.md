@@ -27,4 +27,4 @@ category: QA Testing
 description: Freelance QA Tester
 link: https://store.steampowered.com/app/2705890/Goodboy_Galaxy/
 ---
-outer
+Drawn by the mesmerizing visuals on authentic Game Boy Advance systems, I contributed my QA skills to Goodboy Galaxy’s alpha and beta phases. My role involved a unique blend of testing on original hardware and emulation, helping to root out performance glitches in this trailblazing 2023 game that was the first commercial release on the GBA in over 13 years!
