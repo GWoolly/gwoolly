@@ -69,6 +69,8 @@ credits: 'Modified from <a href="http://startbootstrap.com">Start Bootstrap</a> 
 
 # Build settings
 markdown: kramdown
+kramdown:
+    input: GFM
 permalink: pretty
 
 #for posts

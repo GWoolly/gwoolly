@@ -1,0 +1,19 @@
+/* Jekyll Site table */
+.content-inner table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.content-inner th, .content-inner td {
+  /* text-align: left; */
+  /* vertical-align: top; */
+  padding: 8px;
+  width: 50%; /* Equal width columns for a 2-column table */
+}
+
+.content-inner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

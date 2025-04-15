@@ -113,3 +113,108 @@ document.addEventListener("DOMContentLoaded", function() {
     return null;
   }
 });
+
+
+// // Markdown tables to columns
+// document.addEventListener('DOMContentLoaded', function() {
+  // // Find all tables in the document
+  // const tables = document.querySelectorAll('table');
+  
+  // tables.forEach(table => {
+    // // Check if the first cell contains "column-table"
+    // const firstCell = table.querySelector('td, th');
+    // if (firstCell && firstCell.textContent.trim().toLowerCase() === 'column-table') {
+      // // Get all rows except the header row (which contains our marker)
+      // const rows = Array.from(table.querySelectorAll('tr')).slice(1);
+      // if (rows.length === 0) return;
+      
+      // // Count columns from the first data row
+      // const columns = rows[0].querySelectorAll('td, th').length;
+      
+      // // Create a new div to replace the table
+      // const columnContainer = document.createElement('div');
+      // columnContainer.className = 'multi-column col-' + columns;
+      
+      // // For each column, create a div and fill it with content from that column across all rows
+      // for (let colIndex = 0; colIndex < columns; colIndex++) {
+        // const columnDiv = document.createElement('div');
+        
+        // // Collect markdown content for this column from all rows
+        // let markdownContent = '';
+        
+        // rows.forEach(row => {
+          // const cells = row.querySelectorAll('td, th');
+          // if (colIndex < cells.length) {
+            // // Get text content from cell (raw markdown)
+            // markdownContent += cells[colIndex].textContent + '\n\n';
+          // }
+        // });
+        
+        // // Process the markdown content
+        // const htmlContent = processMarkdown(markdownContent);
+        // columnDiv.innerHTML = htmlContent;
+        
+        // columnContainer.appendChild(columnDiv);
+      // }
+      
+      // // Replace the table with our column layout
+      // table.parentNode.replaceChild(columnContainer, table);
+    // }
+  // });
+  
+  // // Simple markdown processor
+  // function processMarkdown(markdown) {
+    // if (!markdown) return '';
+    
+    // let html = markdown;
+    
+    // // Process headings (# Heading)
+    // html = html.replace(/^(#{1,6})\s+(.+)$/gm, function(match, hashes, text) {
+      // const level = hashes.length;
+      // return `<h${level}>${text.trim()}</h${level}>`;
+    // });
+    
+    // // Process bold (**text**)
+    // html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // // Process italic (*text*)
+    // html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    
+    // // Process links [text](url)
+    // html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
+    
+    // // Process unordered lists
+    // html = html.replace(/^\s*[\*\-]\s+(.+)$/gm, '<li>$1</li>');
+    // html = html.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+    
+    // // Process ordered lists
+    // html = html.replace(/^\s*\d+\.\s+(.+)$/gm, '<li>$1</li>');
+    // html = html.replace(/(<li>.*<\/li>)/gs, '<ol>$1</ol>');
+    
+    // // Process blockquotes
+    // html = html.replace(/^\>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
+    
+    // // Process images ![alt](src)
+    // html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
+    
+    // // Process code blocks
+    // html = html.replace(/```(.*?)```/gs, function(match, code) {
+      // return `<pre><code>${code.trim()}</code></pre>`;
+    // });
+    
+    // // Process inline code
+    // html = html.replace(/`(.*?)`/g, '<code>$1</code>');
+    
+    // // Process paragraphs (lines with content)
+    // html = html.replace(/^(?!<[a-z][^>]*>)(.+)$/gm, '<p>$1</p>');
+    
+    // // Fix any duplicate paragraph tags
+    // html = html.replace(/<p><p>/g, '<p>');
+    // html = html.replace(/<\/p><\/p>/g, '</p>');
+    
+    // // Replace multiple newlines with a single one
+    // html = html.replace(/\n\s*\n/g, '\n');
+    
+    // return html;
+  // }
+// });

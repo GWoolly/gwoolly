@@ -1,0 +1,16 @@
+/* Obsidian CSS for Jekyll column compatibility */
+
+/* Hide Jekyll liquid tags in Obsidian preview */
+.markdown-preview-view .jekyll-columns {
+  display: none;
+}
+
+/* Show Obsidian-specific columns in Obsidian */
+.markdown-preview-view .obsidian-columns {
+  display: block;
+}
+
+/* For website viewing - hide Obsidian-specific content */
+body:not(.obsidian-app) .obsidian-columns {
+  display: none;
+}
