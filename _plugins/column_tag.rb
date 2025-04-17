@@ -20,6 +20,7 @@
 
 # Liquid::Template.register_tag('column', Jekyll::ColumnTagBlock)
 
+# column_tag.rb
 module Jekyll
   class ColumnTagBlock < Liquid::Block
     def initialize(tag_name, markup, tokens)

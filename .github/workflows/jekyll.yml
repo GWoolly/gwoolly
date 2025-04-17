@@ -1,28 +1,32 @@
-name: Build Jekyll Site with Plugins
+name: Build and deploy Jekyll site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # Or your default branch name
 
 jobs:
-  jekyll:
+  github-pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
-
-      - name: Install Jekyll and Bundler
-        run: gem install bundler jekyll
+          ruby-version: '3.2'
+          bundler-cache: true
 
       - name: Install dependencies
-        run: bundle install || bundle init && echo 'gem "jekyll"' >> Gemfile && bundle install
+        run: |
+          gem install bundler
+          bundle install
 
       - name: Build site
         run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
