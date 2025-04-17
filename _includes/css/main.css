@@ -12,6 +12,12 @@ p {
     font-size: 20px;
 }
 
+/* Make normal text within markdown be normal */
+.content-inner, .content-inner * {
+  font-size: revert !important;
+}
+
+
 p.small {
     font-size: 16px;
 }
