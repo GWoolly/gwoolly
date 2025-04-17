@@ -1,35 +1,114 @@
-name: Build and deploy Jekyll site to GitHub Pages
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+name: Deploy Jekyll site to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - main  # Or your default branch name
+    branches: ["master"]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  github-pages:
+  # Build job
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
+      
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
         with:
-          ruby-version: '3.2'
+          ruby-version: '3.1'
           bundler-cache: true
-
-      - name: Install dependencies
+          cache-version: 0
+      
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      
+      # Add this step to ensure your plugins directory exists
+      - name: Create plugins directory
+        run: mkdir -p ./_plugins
+      
+      # Add custom columns plugins
+      - name: Add column plugins
         run: |
-          gem install bundler
-          bundle install
-
-      - name: Build site
-        run: bundle exec jekyll build
+          cat > ./_plugins/columns_container_tag.rb << 'EOF'
+          module Jekyll
+            class ColumnsContainerBlock < Liquid::Block
+              def initialize(tag_name, markup, tokens)
+                super
+              end
+              def render(context)
+                content = super
+                # Wrap all columns in a flex container
+                "<div class=\"flex-container\">#{content}</div>"
+              end
+            end
+          end
+          Liquid::Template.register_tag('columns', Jekyll::ColumnsContainerBlock)
+          EOF
+          
+          cat > ./_plugins/column_tag.rb << 'EOF'
+          module Jekyll
+            class ColumnTagBlock < Liquid::Block
+              def initialize(tag_name, markup, tokens)
+                super
+                @markup = markup
+              end
+              def render(context)
+                content = super
+                site = context.registers[:site]
+                converter = site.find_converter_instance(Jekyll::Converters::Markdown)
+                
+                # Process the markdown content but preserve HTML
+                converted_content = converter.convert(content)
+                
+                # Add any additional markup/classes from the tag if provided
+                markup_attr = @markup.strip.empty? ? "" : " #{@markup}"
+                
+                # Wrap in a flex column div
+                "<div class=\"flex-column\"#{markup_attr}>#{converted_content}</div>"
+              end
+            end
+          end
+          Liquid::Template.register_tag('column', Jekyll::ColumnTagBlock)
+          EOF
+      
+      - name: Build with Jekyll
+        # Outputs to the './_site' directory by default
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      
+      - name: Upload artifact
+        # Automatically uploads an artifact from the './_site' directory by default
+        uses: actions/upload-pages-artifact@v3
 
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+        id: deployment
+        uses: actions/deploy-pages@v4
