@@ -12,7 +12,6 @@ category:
 description: Level Designer
 Platforms: Minecraft
 ---
-
 **The Enchanted Isle (TEI)** was a well-known Minecraft server that stood out for its inventive game modes and custom-designed maps, which frequently attracted many popular YouTubers, notably **Stampylongnose** and **The Yogscast**. 
 {% columns %}
 {% column %}

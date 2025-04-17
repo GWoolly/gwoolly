@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2025-03-03-Chicken Run Eggstraction.md",
+                "file": "_posts/2025-04-15-TEI Minecraft Server.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-03-03-Chicken Run Eggstraction"
+              "title": "2025-04-15-TEI Minecraft Server"
             }
           },
           {
@@ -197,13 +197,14 @@
   },
   "active": "10625b7963a803b2",
   "lastOpenFiles": [
+    "Templates/column.md",
+    "_posts/2025-04-15-TEI Minecraft Server.md",
+    "_posts/2025-03-03-Chicken Run Eggstraction.md",
     "_pluginsDisabled/columns.html",
     "_pluginsDisabled/column.html",
-    "_posts/2025-04-15-TEI Minecraft Server.md",
     "_pluginsDisabled/columns_block.rb",
     "_pluginsDisabled/columns.rb",
     "Templates/Template-Post.md",
-    "_posts/2025-03-03-Chicken Run Eggstraction.md",
     "_includes/Xcolumns.html",
     "_includes/Xcolumn.html",
     "_pluginsDisabled/columns.rbOLD",
@@ -212,11 +213,9 @@
     "New folder",
     "_posts/2022-11-30-VFlects.md",
     "img/vflects/bat.gif",
-    "Templates/column.md",
     "_site/Templates/column.md",
     "_site/Templates/Untitled.md",
     "_posts/2012-03-12-Goodboy Galaxy.md",
-    "_plugins/column_tag.rb",
     "img/cr2/miro.png",
     "_site/img/cr2/miro.png",
     "_posts/2016-8-12-No Mans Sky.md",

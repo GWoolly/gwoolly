@@ -36,4 +36,3 @@ In addition to QA tools and prototyping, I contributed to polish tasks like crea
 {% endcolumn %}
 {% endcolumns %}
 
-{% text % }
