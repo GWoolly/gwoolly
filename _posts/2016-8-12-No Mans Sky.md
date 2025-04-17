@@ -8,7 +8,8 @@ alt: No Mans Sky
 release: 2021-9-27
 platforms: Playstation / PC / Xbox
 client: Hello Games / Testology Ltd
-category: QA Testing
+category:
+  - QA
 description: QA Tester
 link: https://store.steampowered.com/app/275850/No_Mans_Sky/
 ---

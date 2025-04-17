@@ -1,0 +1,42 @@
+{% assign content = include.content %}
+{% assign output = content | markdownify %}
+
+{% if output contains '<table' %}
+  {% assign table_parts = output | split: '<table' %}
+  {% assign final_output = '' %}
+  
+  {% for part in table_parts %}
+    {% if forloop.first %}
+      {% assign final_output = final_output | append: part %}
+    {% else %}
+      {% assign table_closing = part | split: '</table>' %}
+      {% assign table_body = table_closing[0] %}
+      {% assign after_table = table_closing[1] %}
+      
+      {% assign table_with_tag = '<table' | append: table_body | append: '</table>' %}
+      {% assign processed_table = table_with_tag %}
+      
+      {% assign cell_parts = table_with_tag | split: '<td' %}
+      {% for cell_part in cell_parts offset: 1 %}
+        {% assign cell_content_parts = cell_part | split: '</td>' %}
+        {% assign cell_content = cell_content_parts[0] %}
+        {% assign tag_end_pos = cell_content | split: '>' | first | size | plus: 1 %}
+        {% assign td_tag = cell_content | slice: 0, tag_end_pos %}
+        {% assign cell_inner = cell_content | slice: tag_end_pos, cell_content.size %}
+        
+        {% if cell_inner contains '#' or cell_inner contains '*' or cell_inner contains '_' or cell_inner contains '`' %}
+          {% assign processed_inner = cell_inner | markdownify %}
+          {% assign processed_cell = '<td' | append: td_tag | append: processed_inner | append: '</td>' %}
+          {% assign original_cell = '<td' | append: cell_content | append: '</td>' %}
+          {% assign processed_table = processed_table | replace: original_cell, processed_cell %}
+        {% endif %}
+      {% endfor %}
+      
+      {% assign final_output = final_output | append: processed_table | append: after_table %}
+    {% endif %}
+  {% endfor %}
+  
+  {{ final_output }}
+{% else %}
+  {{ output }}
+{% endif %}

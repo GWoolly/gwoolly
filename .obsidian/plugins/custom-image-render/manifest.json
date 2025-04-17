@@ -1,0 +1,10 @@
+
+{
+  "id": "custom-image-render",
+  "name": "Custom Image Renderer",
+  "version": "1.0.0",
+  "description": "Customizes image rendering with alignment, styles, and captions.",
+  "author": "Your Name",
+  "main": "main.js",
+  "minAppVersion": "0.12.0"
+}

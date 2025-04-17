@@ -70,7 +70,15 @@ credits: 'Modified from <a href="http://startbootstrap.com">Start Bootstrap</a> 
 # Build settings
 markdown: kramdown
 kramdown:
+    # Use Github's extended markdown format
     input: GFM
+    # do not replace newlines by <br>s
+    hard_wrap: false
+    # parse markdown inside block-level HTML tag
+    # parse_block_html: true
+    # parse_span_html: true
+    # remove_block_html_tags: false
+plugins_dir: _plugins
 permalink: pretty
 
 #for posts
@@ -79,4 +87,4 @@ defaults:
       path: ""
       type: "posts"
     values:
-      permalink: ""
+      permalink: /:title/

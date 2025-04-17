@@ -8,7 +8,8 @@ alt: Battletoads 2020
 release: 2021-9-27
 platforms: PC / Xbox
 client: Dlala Studios / Rare Ltd
-category: QA Testing
+category:
+  - QA
 description: QA Tester
 link: https://www.aardman.com/film-tv-games/chicken-run-eggstraction/
 ---

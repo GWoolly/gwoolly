@@ -615,6 +615,7 @@ footer .footer-below {
     justify-content: center;
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .portfolio-modal .modal-content .content-inner {
@@ -637,7 +638,7 @@ footer .footer-below {
 .portfolio-modal .modal-content .content-inner p, 
 .portfolio-modal .modal-content .content-inner ul, 
 .portfolio-modal .modal-content .content-inner ol {
-    text-align: left;
+    text-align: left !important;
 }
 
 /* Close button styling */
@@ -895,9 +896,14 @@ hr.star-div.gamepad {
   object-fit: contain; /* preserve aspect ratio */
 }
 
-/* Optional: Scale on hover */
-.platform-icon:hover {
-  transform: scale(1.2);
+/* Optional: Scale on hover, but only if it has a link! */
+.platform-icon:not(.disabled):hover {
+  transform: scale(1.1);
+}
+
+/* Grey out any platform icons that don't have a link */
+.platform-icon.disabled {
+  opacity: 0.5;
 }
 
 /* ===== CUSTOM COLOURS FOR PLATFORMS ===== */
@@ -912,4 +918,35 @@ hr.star-div.gamepad {
 
 .platform-icon.xbox:hover {
   filter: invert(19%) sepia(97%) saturate(5266%) hue-rotate(102deg) brightness(98%) contrast(90%);
+}
+
+
+
+
+/* Flex Columns */
+.flex-column {
+  flex: 1 1 0 !important;
+  min-width: 300px; /* Ensures minimum width */
+  max-width: 50%; /* Ensures no column takes more than half */
+  padding: 15px;
+}
+
+.flex-column p[align="right"] {
+  text-align: right !important;
+}
+
+.flex-column p[align="center"] {
+  text-align: center !important;
+}
+
+.flex-column p[align="left"] {
+  text-align: left !important;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row; /* Explicitly set direction to row */
+  justify-content: flex-start; /* Change to flex-start if you want columns to align left */
+  width: 100%;
+  gap: 20px; /* Space between columns */
 }

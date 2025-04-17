@@ -1,19 +1,156 @@
-/* Jekyll Site table */
-.content-inner table {
-  width: 100%;
-  margin: 0 auto;
-  border-collapse: collapse;
-}
+/* /* Jekyll Site table */ */
+/* .content-inner table { */
+  /* width: 100%; */
+  /* margin: 0 auto; */
+  /* border-collapse: collapse; */
+/* } */
 
-.content-inner th, .content-inner td {
+/* .content-inner th, .content-inner td { */
+  /* /* text-align: left; */ */
+  /* /* vertical-align: top; */ */
+  /* padding: 8px; */
+  /* width: 50%; /* Equal width columns for a 2-column table */ */
+/* } */
+
+/* .content-inner img { */
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* display: block; */
+/* } */
+
+
+
+/* /* New columns */ */
+/* /* ----------- */ */
+
+
+/* .flex-container { */
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* gap: 20px; */
+  /* margin-bottom: 1.5rem; */
+/* } */
+
+/* .flex-column { */
+  /* flex: 1; */
+  /* min-width: 250px; */
+/* } */
+
+/* .flex-column.wide { */
+  /* flex: 2; */
+/* } */
+
+/* .flex-column.wider { */
+  /* flex: 3; */
+/* } */
+
+/* .flex-column.narrow { */
+  /* flex: 1; */
+/* } */
+
+/* @media (max-width: 768px) { */
+  /* .flex-container { */
+    /* flex-direction: column; */
+  /* } */
+/* } */
+
+
+
+/* .flex-column { */
+  /* flex: 1; */
+  /* padding: 0 15px; */
+/* } */
+
+/* .flex-container { */
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+/* } */
+
+
+
+
+/* .flex-column { */
+  /* flex: 1; /* Make columns grow equally */ */
+  /* padding: 15px; */
+/* } */
+
+/* .flex-column p[align="right"] { */
+  /* text-align: right; */
+/* } */
+
+/* .flex-column p[align="center"] { */
+  /* text-align: center; */
+/* } */
+
+/* .flex-column p[align="left"] { */
   /* text-align: left; */
-  /* vertical-align: top; */
-  padding: 8px;
-  width: 50%; /* Equal width columns for a 2-column table */
+/* } */
+
+
+/* .flex-container { */
+  /* display: flex; */
+  /* flex-direction: row; /* Explicitly set direction to row */ */
+  /* justify-content: space-between; /* Distribute columns evenly */ */
+  /* width: 100%; */
+  /* gap: 20px; /* Space between columns */ */
+/* } */
+
+
+
+
+
+.flex-column {
+  flex: 1 1 0 !important;
+  min-width: 300px; /* Ensures minimum width */
+  max-width: 50%; /* Ensures no column takes more than half */
+  padding: 15px;
 }
 
-.content-inner img {
-  max-width: 100%;
+/* Target specifically columns containing only images */
+.flex-column p:only-child img:only-child {
+  width: 100%;
   height: auto;
-  display: block;
 }
+
+/* .flex-column img { */
+  /* max-width: 100%; */
+  /* height: auto; */
+/* } */
+
+/* .flex-column { /* Force Equal width */ */
+  /* flex: 1 1 50% !important; /* Each column takes 50% width */ */
+  /* padding: 15px; */
+/* } */
+
+
+
+
+
+img[style="right"] {
+  float: right;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  display: block;
+  text-align: right;
+}
+
+
+/* Image extension */
+/* Rounded corners */
+.rounded {
+  border-radius: 8px;
+}
+
+/* Subtle shadow */
+.shadow {
+  box-shadow: 4px 8px 3px rgba(0, 0, 0, 0.8);
+  margin: 0 0 10px 0;
+}
+
+/* Optional extras */
+.bordered {
+  border: 2px solid #ccc;
+  padding: 8px;
+  background-color: #fff;
+}
+

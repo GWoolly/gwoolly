@@ -72,51 +72,118 @@
                   </div>
                 </div>
               {% endif %}	 
-			  
-              <!-- Platforms Released -->
-              {% if post.platforms.size == 0 %}
-                <div class="platform-icons text-center mt-4 mb-4">
-                  <h4>Platforms Unannounced</h4>
-                </div>
-              {% else %}
-                <div class="platform-icons text-center mt-4 mb-4">
-                  <h4>Available On</h4>
-                  <div class="icon-container">
-                    {% for platform in post.platforms %}
-                      {% case platform.name %}
-                        {% when "apple" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
-                          </a>
-                        {% when "google" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
-                          </a>
-                        {% when "playstation" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
-                          </a>
-                        {% when "steam" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
-                          </a>
-                        {% when "switch" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
-                          </a>
-                        {% when "xbox" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
-                          </a>
-                        {% when "itch" %}
-                          <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-                            <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
-                          </a>
-                      {% endcase %}
-                    {% endfor %}
-                  </div>
-                </div>
-              {% endif %}
+
+<!-- Platforms Released -->
+{% assign platform_count = 0 %}
+{% if post.steam != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+{% if post.google != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+{% if post.apple != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+{% if post.playstation != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+{% if post.xbox != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+{% if post.switch != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+{% if post.itch != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
+
+{% if platform_count == 0 %}
+  <div class="platform-icons text-center mt-4 mb-4">
+    <h4>Platforms Unannounced</h4>
+  </div>
+{% else %}
+  <div class="platform-icons text-center mt-4 mb-4">
+    <h4>Available On</h4>
+    <div class="icon-container">
+      {% if post.apple != nil %}
+        {% assign url_length = post.apple | strip | size %}
+        {% if url_length > 1 and post.apple != "." %}
+          <a href="{{ post.apple }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon disabled" title="Apple Store">
+          </span>
+        {% endif %}
+      {% endif %}
+      
+      {% if post.google != nil %}
+        {% assign url_length = post.google | strip | size %}
+        {% if url_length > 1 and post.google != "." %}
+          <a href="{{ post.google }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon disabled" title="Google Play">
+          </span>
+        {% endif %}
+      {% endif %}
+      
+      {% if post.playstation != nil %}
+        {% assign url_length = post.playstation | strip | size %}
+        {% if url_length > 1 and post.playstation != "." %}
+          <a href="{{ post.playstation }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation disabled" title="PlayStation">
+          </span>
+        {% endif %}
+      {% endif %}
+      
+      {% if post.steam != nil %}
+        {% assign url_length = post.steam | strip | size %}
+        {% if url_length > 1 and post.steam != "." %}
+          <a href="{{ post.steam }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon disabled" title="Steam">
+          </span>
+        {% endif %}
+      {% endif %}
+      
+      {% if post.switch != nil %}
+        {% assign url_length = post.switch | strip | size %}
+        {% if url_length > 1 and post.switch != "." %}
+          <a href="{{ post.switch }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch disabled" title="Nintendo Switch">
+          </span>
+        {% endif %}
+      {% endif %}
+      
+      {% if post.xbox != nil %}
+        {% assign url_length = post.xbox | strip | size %}
+        {% if url_length > 1 and post.xbox != "." %}
+          <a href="{{ post.xbox }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
+          </span>
+        {% endif %}
+      {% endif %}
+      
+      {% if post.itch != nil %}
+        {% assign url_length = post.itch | strip | size %}
+        {% if url_length > 1 and post.itch != "." %}
+          <a href="{{ post.itch }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+            <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
+          </a>
+        {% else %}
+          <span class="platform-link disabled">
+            <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
+          </span>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
 			
               <!-- Brief Description -->
               {% if post.description %}
@@ -137,11 +204,11 @@
                   </li>
                 {% endif %}
                 
-                {% if post.category %}
-                  <li>Service:
-                    <strong>{{ post.category }}</strong>
-                  </li>
-                {% endif %}
+                <!-- {% if post.category %} -->
+                  <!-- <li>Service: -->
+                    <!-- <strong>{{ post.category }}</strong> -->
+                  <!-- </li> -->
+                <!-- {% endif %} -->
               </ul>
             
               <hr class="star-div">
@@ -164,6 +231,7 @@
                   <div class="content text-center">
                     <div class="content-inner">
                       {{ post.content | markdownify }}
+					  <!-- {% include markdown_table.html content=post.content %} -->
                     </div>
                   </div>
                 </div>
@@ -172,10 +240,13 @@
                 <div class="content text-center">
                   <div class="content-inner">
                     {{ post.content | markdownify }}
+					<!-- {% include markdown_table.html content=post.content %} -->
                   </div>
                 </div>
               {% endif %}
-
+			
+			   <!-- End of modal content -->
+			  <hr>
               <button type="button" class="btn btn-default" data-dismiss="modal">
                 <i class="fa fa-times"></i> Close
               </button>

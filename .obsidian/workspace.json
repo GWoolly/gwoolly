@@ -4,21 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "24fc5723741b1e0c",
+        "id": "1401fca3a5dc8583",
         "type": "tabs",
         "children": [
+          {
+            "id": "10625b7963a803b2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2025-03-03-Chicken Run Eggstraction.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-03-03-Chicken Run Eggstraction"
+            }
+          },
           {
             "id": "6672fa1ff54d69ce",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2025-04-14-Test.md",
+                "file": "_posts/2025-03-03-Chicken Run Eggstraction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-04-14-Test"
+              "title": "2025-03-03-Chicken Run Eggstraction"
             }
           }
         ]
@@ -165,7 +179,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 405.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,29 +191,50 @@
       "command-palette:Open command palette": false,
       "templater-obsidian:Templater": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "markdown-importer:Open format converter": false
+      "markdown-importer:Open format converter": false,
+      "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "6672fa1ff54d69ce",
+  "active": "10625b7963a803b2",
   "lastOpenFiles": [
-    "_includes/md_cell.html",
-    "_includes/New Text Document.txt",
-    "_posts/2022-11-30-VFlects.md",
-    "_posts/2020-9-08-Battletoads.md",
-    "_posts/2025-04-14-Test.md",
-    "_posts/2012-03-12-Goodboy Galaxy.md",
-    "_posts/2021-10-25-Runescape - Tzekhaar Front.md",
-    "_includes/column.html",
-    "_includes/columns - Copy.html",
-    "_includes/columns.html",
-    "_plugins/columns_block.rb",
-    "_plugins/New Text Document.txt",
-    "_plugins",
+    "_pluginsDisabled/columns.html",
+    "_pluginsDisabled/column.html",
+    "_posts/2025-04-15-TEI Minecraft Server.md",
+    "_pluginsDisabled/columns_block.rb",
+    "_pluginsDisabled/columns.rb",
+    "Templates/Template-Post.md",
+    "_posts/2025-03-03-Chicken Run Eggstraction.md",
+    "_includes/Xcolumns.html",
+    "_includes/Xcolumn.html",
+    "_pluginsDisabled/columns.rbOLD",
+    "_pluginsDisabled/columns_block.rbOLD",
+    "_pluginsDisabled",
     "New folder",
-    "_site/img/vflects/bat.gif",
+    "_posts/2022-11-30-VFlects.md",
     "img/vflects/bat.gif",
-    "_includes/css/columns.css",
-    "_site/css/columns.css",
+    "Templates/column.md",
+    "_site/Templates/column.md",
+    "_site/Templates/Untitled.md",
+    "_posts/2012-03-12-Goodboy Galaxy.md",
+    "_plugins/column_tag.rb",
+    "img/cr2/miro.png",
+    "_site/img/cr2/miro.png",
+    "_posts/2016-8-12-No Mans Sky.md",
+    "_posts/2020-09-08-Battletoads.md",
+    "_posts/2021-10-25-Runescape - Tzekhaar Front.md",
+    "_site/img/tei/stampy.jpg",
+    "img/tei/stampy.jpg",
+    "_posts/2021-9-27-Runescape - Croesus Front.md",
+    "_posts/2025-04-14-test.md",
+    "_site/img/portfolio/TEI.png",
+    "img/portfolio/TEI.png",
+    "_posts/2025-04-15-TestPost.md",
+    "_posts/Test2.md",
+    "_posts/2025-04-14-Test.md",
+    "_site/Templates/Template,Post.md",
+    "_site/Untitled.md",
+    "_posts/2020-9-08-Battletoads.md",
+    "_site/img/vflects/bat.gif",
     "Untitled.canvas",
     "_site/Untitled.canvas"
   ]

@@ -1,0 +1,20 @@
+/* Highlight any text that looks like {% ... %} inside the editor */
+
+.cm-s-obsidian span.cm-string {
+  background-color: rgba(255, 255, 0, 0.3);
+  border-radius: 4px;
+  padding: 0 2px;
+}
+
+/* Try to match formatting that looks like {%, but only approximate */
+.cm-s-obsidian span:has-text("{%") {
+  background-color: yellow;
+  font-weight: bold;
+  color: black;
+}
+
+/* Tighter highlight if it's inline code (optional fallback) */
+.cm-s-obsidian .cm-inline-code {
+  background-color: rgba(255, 255, 0, 0.3);
+  color: black;
+}
