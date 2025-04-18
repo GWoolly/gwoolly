@@ -1,0 +1,202 @@
+<!-- Gallery Modal with Improved Caption Layout -->
+<div class="gallery-modal" id="gallery-modal">
+  <button class="close-gallery fa-solid fa-xmark close-modal"></button>
+
+  <div class="gallery-content">
+    <!-- Container for both image and caption -->
+    <div class="image-caption-container">
+      <img id="modal-image" src="" alt="Gallery image">
+      <div id="modal-caption" class="modal-caption"></div>
+    </div>
+
+    <div class="modal-nav">
+      <button class="nav-button fa-solid fa-chevron-left" id="prev-button"></button>
+      <button class="nav-button fa-solid fa-chevron-right" id="next-button"></button>
+    </div>
+  </div>
+
+  <div class="image-counter" id="image-counter">
+    <div class="counter-text">1/1</div>
+    <div class="indicator-dots" id="indicator-dots"></div>
+  </div>
+</div>
+  
+<style>
+/* Updated CSS with caption inside image container */
+
+/* Gallery container */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Gallery item */
+.gallery-item {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Modal */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 1100;
+  overflow: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-modal.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+}
+
+/* Image and Caption Container - keeps them together */
+.image-caption-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+.gallery-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  top: 10px;
+}
+
+.gallery-content img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* Caption styling - inside the container */
+.modal-caption {
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+/* Image counter */
+#image-counter {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: grey;
+  position: relative;
+  width: 100%;
+}
+
+/* Indicator dots */
+.indicator-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #222;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #{{ site.color.primary }};
+}
+
+.close-gallery {
+  padding: 0;
+  position: absolute;
+  top: 20px;
+  right: 50%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+.close-gallery:hover {
+  transition: all 0.2s ease;
+  color: #{{ site.color.primary }};
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+#prev-button {
+  left: 20px;
+}
+
+#next-button {
+  right: 20px;
+}
+
+.nav-button:hover {
+  color: #{{ site.color.primary }} !important;
+}
+</style>

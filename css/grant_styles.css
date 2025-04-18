@@ -1,23 +1,4 @@
-/* /* Jekyll Site table */ */
-/* .content-inner table { */
-  /* width: 100%; */
-  /* margin: 0 auto; */
-  /* border-collapse: collapse; */
-/* } */
-
-/* .content-inner th, .content-inner td { */
-  /* /* text-align: left; */ */
-  /* /* vertical-align: top; */ */
-  /* padding: 8px; */
-  /* width: 50%; /* Equal width columns for a 2-column table */ */
-/* } */
-
-/* .content-inner img { */
-  /* max-width: 100%; */
-  /* height: auto; */
-  /* display: block; */
-/* } */
-
+/* Jekyll Site table */
 .flex-column {
   flex: 1 1 0 !important;
   min-width: 300px; /* Ensures minimum width */
@@ -31,93 +12,13 @@
   height: auto;
 }
 
-
-/* Requires image_preprocessor.rb */
-/* Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc| */
-  /* next unless doc.output_ext == '.html' */
-
-  /* # Only process documents that have "layout" defined */
-  /* # (usually real posts/pages, not things like feed.xml) */
-  /* next unless doc.data['layout'] */
-
-  /* puts "[ImagePreprocessor] Processing: #{doc.relative_path}" */
-
-  /* content = doc.content.dup */
-
-/* content.gsub!(/!\[\[(.+?)\]\]/) do */
-  /* match = Regexp.last_match(1).strip */
-  /* parts = match.split('|').map(&:strip) */
-
-  /* path = parts[0] */
-  /* options = parts[1..] || [] */
-
-  /* width = nil */
-  /* height = nil */
-  /* align = nil */
-  /* alt = nil */
-  /* css_class = nil */
-  /* caption = nil */
-
-  /* options.each do |opt| */
-    /* case opt */
-    /* when /^(\d+)x(\d+)$/ */
-      /* width, height = $1, $2 */
-    /* when /\A(left|right|center)\z/ */
-      /* align = opt */
-    /* when /^alt=(.+)$/i */
-      /* alt = $1.strip */
-    /* when /^class=(.+)$/i */
-      /* css_class = $1.strip */
-    /* when /^caption=(.+)$/i */
-      /* caption = $1.strip */
-    /* end */
-  /* end */
-
-  /* width_attr = width ? " width=\"#{width}\"" : "" */
-  /* height_attr = height ? " height=\"#{height}\"" : "" */
-  /* alt_attr = alt ? " alt=\"#{alt}\"" : " alt=\"Image\"" */
-  /* class_attr = css_class ? " class=\"#{css_class}\"" : "" */
-
-  /* style_attr = case align */
-               /* when "left" */
-                 /* ' style="float:left; margin: 0 1em 1em 0;"' */
-               /* when "right" */
-                 /* ' style="float:right; margin: 0 0 1em 1em;"' */
-               /* when "center" */
-                 /* ' style="display:block; margin: 0 auto;"' */
-               /* else */
-                 /* "" */
-               /* end */
-
-  /* # Build the <img> tag */
-  /* img_tag = "<img src=\"/#{path}\"#{width_attr}#{height_attr}#{alt_attr}#{style_attr} />" */
-
-  /* # If class is polaroid, wrap the image in a <div class="photo-inner"> */
-  /* if css_class&.include?("polaroid") */
-    /* img_tag = "<div class=\"photo-inner\">#{img_tag}</div>" */
-  /* end */
-
-  /* if caption */
-    /* figure_style = align == "center" ? ' style="text-align:center;"' : "" */
-    /* "<figure#{figure_style}#{class_attr}>#{img_tag}<figcaption>#{caption}</figcaption></figure>" */
-  /* else */
-    /* img_tag */
-  /* end */
-/* end */
-
-
-  /* doc.content = content */
-/* end */
-
-
-img[style="right"] {
+img[style*="right"] {
   float: right;
   margin-left: 1em;
   margin-bottom: 1em;
   display: block;
   text-align: right;
 }
-
 
 /* Image extension */
 /* Rounded corners */
@@ -131,13 +32,11 @@ img[style="right"] {
   margin: 0 0 10px 0;
 }
 
-
 .bordered {
   border: 2px solid #ccc;
   padding: 8px;
   background-color: #fff;
   display: inline-block;
-  /* text-align: center; /* Optional for centered caption */ */
 }
 
 /* Image and caption handler */
@@ -153,24 +52,6 @@ figcaption {
   text-align: center; /* Center the caption text */
 }
 
-
-.polaroid {
-  --rotation: 0deg; /* default value */
-  background: radial-gradient(ellipse at center, #fff 55%, #f0f0f0 75%, #e3e2e2 95%);
-  padding: 10px 10px 20px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 8px 8px rgba(0,0,0,0.2);
-  display: inline-block;
-  text-align: center;
-  max-width: 90%;
-  margin: 20px;
-  border-radius: 4px;
-  /* transform: rotate(-1deg); */
-  transform: rotate(var(--rotation));
-  transition: transform 0.3s ease; /* smooth hover effect later */
-}
-
-
 .photo-inner {
   position: relative;
   overflow: hidden;
@@ -182,21 +63,63 @@ figcaption {
   height: auto;
   display: block;
   border: 2px solid #404040bd;
-  /* box-shadow: inset 8px 10px 12px rgba(0, 0, 0, 0.15); /* true inner shadow */ */
 }
 
-.polaroid figcaption {
-  font-family: 'Brush Script MT', cursive;
-  font-size: 0.85rem;
-  color: #0b0551;
-  padding: 3px;
+/* Profile image styles - moved up */
+.img-profile {
+  cursor: pointer;
+  transition: transform 0.05s ease;
+  display: inline-block;
 }
 
+.img-profile:hover {
+  transform: scale(1.1);
+}
+
+.img-profile:active {
+  transform: scale(0.95);
+}
+
+/* Polaroid styles - base class */
+.polaroid {
+  --rotation: 0deg; /* default value */
+  background: radial-gradient(ellipse at center, #fff 55%, #f0f0f0 75%, #e3e2e2 95%);
+  padding: 10px 10px 20px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 8px 8px rgba(0,0,0,0.2);
+  display: inline-block;
+  text-align: center;
+  max-width: 90%;
+  margin: 20px;
+  border-radius: 4px;
+  transform: rotate(var(--rotation));
+  transition: transform 0.3s ease; /* smooth hover effect later */
+}
+
+/* Make sure polaroid hover doesn't conflict with other hovers */
 .polaroid:hover {
   transform: rotate(0deg) scale(1.02);
   z-index: 2;
 }
 
+/* Separate polaroid figcaption styles */
+.polaroid figcaption {
+  margin-top: 10px;
+  color: #0f1044;
+  line-height: 1.4;
+  text-align: center;
+  height: 40px; /* Fixed height for captions */
+  /* overflow: hidden; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Font */
+  font-family: "Sriracha", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px !important;
+}
 
 /* Polaroid Gallery */
 @keyframes popUp {
@@ -214,6 +137,7 @@ figcaption {
   cursor: pointer;
 }
 
+/* Make these more specific to avoid conflicts */
 .polaroid-stack .polaroid {
   position: absolute;
   top: 0;
@@ -229,43 +153,29 @@ figcaption {
   transform-origin: center 120%; /* Adjust rotation origin to be below the card */
 }
 
-.polaroid-stack .polaroid .image-container {
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  background-color: #000; /* Black background for non-square images */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* .polaroid-stack .polaroid .photo-inner { */
+  /* width: 200px; */
+  /* height: 200px; */
+  /* overflow: hidden; */
+  /* background-color: #000; /* Black background for non-square images */ */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+/* } */
 
-.polaroid-stack .polaroid .image-container img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain; /* Changed to contain for centering non-square images */
-}
-
-.polaroid-stack .polaroid .caption {
-  text-align: center;
-  margin-top: 10px;
-  font-family: 'Indie Flower', cursive, sans-serif; /* Handwritten style font */
-  color: #333;
-  font-size: 14px;
-  line-height: 1.4;
-  height: 40px; /* Fixed height for captions */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* .polaroid-stack .polaroid .photo-inner img { */
+  /* max-width: 100%; */
+  /* max-height: 100%; */
+  /* width: auto; */
+  /* height: auto; */
+  /* object-fit: cover; /* Changed to contain for centering non-square images */ */
 }
 
 .polaroid-stack .polaroid.pop {
   animation: popUp 0.4s ease;
 }
 
-/* Add a subtle border and shadow to make the polaroids more realistic */
+/* These styles shouldn't affect img-profile since they're specifically for .polaroid-stack .polaroid */
 .polaroid-stack .polaroid {
   border: 1px solid #e0e0e0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -279,7 +189,6 @@ figcaption {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-image: url("/css/polaroid/texture-noise.svg"); */
   background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   opacity: 0.05;
   pointer-events: none;
@@ -297,3 +206,24 @@ figcaption {
   border-radius: 50%;
   filter: blur(2px);
 }
+
+.polaroid-stack .polaroid img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  background-color: #000; /* Black background for non-square images */
+}
+
+
+
+
+
+
+/* /* Position the close button top-right inside the modal */ */
+/* .close-gallery { */
+  /* position: absolute; */
+  /* top: 20px; */
+  /* right: 20px; */
+  /* z-index: 2; */
+/* } */

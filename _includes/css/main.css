@@ -521,6 +521,8 @@ footer .footer-below {
     overflow: visible; /* Allow content to determine size */
     display: flex;
     flex-direction: column;
+	
+	z-index: 1000;
 }
 
 /* Modal Content Inner - Contains all modal elements */

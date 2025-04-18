@@ -50,6 +50,8 @@ img/cr2/miro.png | chickens 🐥
 img/portfolio/Battletoads.jpg | Toads 🐸
 ```
 
-```markdown
-# Heading
+```gallery
+img/vflects/bat.gif | vflects
+img/cr2/miro.png | chickens 🐥
+img/portfolio/Battletoads.jpg | Toads 🐸
 ```

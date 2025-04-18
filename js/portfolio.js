@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const topPolaroid = polaroids[0];
     
     // Step 1: Move right (translate right and up)
-    topPolaroid.style.transition = 'transform 0.4s ease';
+    topPolaroid.style.transition = 'transform 0.2s ease';
     topPolaroid.style.transform = 'translate(150%, -20%) rotate(20deg)';
 
     setTimeout(() => {
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       // Step 2: Slide left (translate back to the stack)
       // Use the new rotation value as part of the return animation
-      topPolaroid.style.transition = 'transform 0.6s ease';
+      topPolaroid.style.transition = 'transform 0.3s ease';
       topPolaroid.style.transform = 'translate(0, 0) rotate(var(--rotation))';
 
       setTimeout(() => {
@@ -185,9 +185,9 @@ document.addEventListener("DOMContentLoaded", function() {
           applyFanEffect();
         }
 
-      }, 600); // After sliding left completes
+      }, 300); // After sliding left completes
 
-    }, 400); // After moving right completes
+    }, 200); // After moving right completes
   }
 
   function applyFanEffect() {
@@ -263,107 +263,231 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-// // Markdown tables to columns
-// document.addEventListener('DOMContentLoaded', function() {
-  // // Find all tables in the document
-  // const tables = document.querySelectorAll('table');
-  
-  // tables.forEach(table => {
-    // // Check if the first cell contains "column-table"
-    // const firstCell = table.querySelector('td, th');
-    // if (firstCell && firstCell.textContent.trim().toLowerCase() === 'column-table') {
-      // // Get all rows except the header row (which contains our marker)
-      // const rows = Array.from(table.querySelectorAll('tr')).slice(1);
-      // if (rows.length === 0) return;
-      
-      // // Count columns from the first data row
-      // const columns = rows[0].querySelectorAll('td, th').length;
-      
-      // // Create a new div to replace the table
-      // const columnContainer = document.createElement('div');
-      // columnContainer.className = 'multi-column col-' + columns;
-      
-      // // For each column, create a div and fill it with content from that column across all rows
-      // for (let colIndex = 0; colIndex < columns; colIndex++) {
-        // const columnDiv = document.createElement('div');
-        
-        // // Collect markdown content for this column from all rows
-        // let markdownContent = '';
-        
-        // rows.forEach(row => {
-          // const cells = row.querySelectorAll('td, th');
-          // if (colIndex < cells.length) {
-            // // Get text content from cell (raw markdown)
-            // markdownContent += cells[colIndex].textContent + '\n\n';
-          // }
-        // });
-        
-        // // Process the markdown content
-        // const htmlContent = processMarkdown(markdownContent);
-        // columnDiv.innerHTML = htmlContent;
-        
-        // columnContainer.appendChild(columnDiv);
-      // }
-      
-      // // Replace the table with our column layout
-      // table.parentNode.replaceChild(columnContainer, table);
-    // }
-  // });
-  
-  // // Simple markdown processor
-  // function processMarkdown(markdown) {
-    // if (!markdown) return '';
-    
-    // let html = markdown;
-    
-    // // Process headings (# Heading)
-    // html = html.replace(/^(#{1,6})\s+(.+)$/gm, function(match, hashes, text) {
-      // const level = hashes.length;
-      // return `<h${level}>${text.trim()}</h${level}>`;
-    // });
-    
-    // // Process bold (**text**)
-    // html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    
-    // // Process italic (*text*)
-    // html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    
-    // // Process links [text](url)
-    // html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
-    
-    // // Process unordered lists
-    // html = html.replace(/^\s*[\*\-]\s+(.+)$/gm, '<li>$1</li>');
-    // html = html.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
-    
-    // // Process ordered lists
-    // html = html.replace(/^\s*\d+\.\s+(.+)$/gm, '<li>$1</li>');
-    // html = html.replace(/(<li>.*<\/li>)/gs, '<ol>$1</ol>');
-    
-    // // Process blockquotes
-    // html = html.replace(/^\>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
-    
-    // // Process images ![alt](src)
-    // html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
-    
-    // // Process code blocks
-    // html = html.replace(/```(.*?)```/gs, function(match, code) {
-      // return `<pre><code>${code.trim()}</code></pre>`;
-    // });
-    
-    // // Process inline code
-    // html = html.replace(/`(.*?)`/g, '<code>$1</code>');
-    
-    // // Process paragraphs (lines with content)
-    // html = html.replace(/^(?!<[a-z][^>]*>)(.+)$/gm, '<p>$1</p>');
-    
-    // // Fix any duplicate paragraph tags
-    // html = html.replace(/<p><p>/g, '<p>');
-    // html = html.replace(/<\/p><\/p>/g, '</p>');
-    
-    // // Replace multiple newlines with a single one
-    // html = html.replace(/\n\s*\n/g, '\n');
-    
-    // return html;
-  // }
-// });
 
+
+
+
+
+// Confetti
+// <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script> Is within header.html
+document.addEventListener('DOMContentLoaded', () => {
+  const profileImg = document.querySelector('.img-profile');
+  
+  // Check if profile image exists
+  if (!profileImg) {
+    console.error('Profile image not found!');
+    return;
+  }
+  
+  // Check if confetti is available
+  if (typeof confetti !== 'function') {
+    console.error('Confetti function not found! Make sure the library is loaded correctly.');
+    return;
+  }
+  
+  let hasTriggered = false;
+  const fanfareSound = new Audio('sounds/fanfare.mp3');
+  
+  function burstConfetti(playSound = false) {
+    console.log('Bursting confetti!');
+    
+    try {
+      // Get the element's position relative to the viewport
+      const rect = profileImg.getBoundingClientRect();
+      
+      // Calculate the origin point (bottom center of the element)
+      const x = (rect.left + rect.width / 2) / window.innerWidth;
+      const y = (rect.bottom) / window.innerHeight;
+      
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x, y }
+      });
+      
+      // Play sound only if requested (on click) and if it loaded properly
+      if (playSound && !fanfareSound.error) {
+        fanfareSound.currentTime = 0;
+        fanfareSound.play().catch(e => console.error('Audio playback failed:', e));
+      }
+    } catch (error) {
+      console.error('Error triggering confetti:', error);
+    }
+  }
+  
+  // Set up IntersectionObserver - no sound when element comes into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasTriggered) {
+        burstConfetti(false); // Don't play sound
+        hasTriggered = true;
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  observer.observe(profileImg);
+  
+  // Add click listener - with sound
+  profileImg.addEventListener('click', (e) => {
+    console.log('Profile image clicked!');
+    burstConfetti(true); // Play sound on click
+  });
+  
+  console.log('Confetti setup complete!');
+});
+
+
+
+// Gallery
+document.addEventListener('DOMContentLoaded', function() {
+  // Gallery variables
+  const galleryModal = document.getElementById('gallery-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalCaption = document.getElementById('modal-caption');
+  const prevButton = document.getElementById('prev-button');
+  const nextButton = document.getElementById('next-button');
+  const closeButton = document.querySelector('.close-gallery');
+  const imageCounter = document.getElementById('image-counter');
+  const indicatorDots = document.getElementById('indicator-dots');
+  
+  let galleryItems = [];
+  let currentIndex = 0;
+  
+  // Initialize galleries
+  const galleryContainers = document.querySelectorAll('.gallery-container');
+  
+  galleryContainers.forEach(container => {
+    const items = container.querySelectorAll('.gallery-item');
+    
+    items.forEach((item, index) => {
+      // Add click event to open modal
+      item.addEventListener('click', function() {
+        openGalleryModal(container, index);
+      });
+    });
+  });
+  
+  // Open gallery modal
+  function openGalleryModal(container, startIndex) {
+    // Get all items in this gallery
+    galleryItems = Array.from(container.querySelectorAll('.gallery-item'));
+    currentIndex = startIndex;
+    
+    // Show modal
+    galleryModal.classList.add('active');
+    
+    // Update image and caption
+    updateModalContent();
+    
+    // Create indicator dots
+    createIndicatorDots();
+    
+    // Update counter
+    updateCounter();
+  }
+  
+  // Update modal image and caption
+  function updateModalContent() {
+    const currentItem = galleryItems[currentIndex];
+    const imageSrc = currentItem.getAttribute('data-src');
+    const imageCaption = currentItem.getAttribute('data-caption');
+    
+    modalImage.src = imageSrc;
+    modalImage.alt = imageCaption || 'Gallery image';
+    
+    // Update caption
+    if (imageCaption && imageCaption.trim() !== '') {
+      modalCaption.textContent = imageCaption;
+      modalCaption.style.display = 'block';
+    } else {
+      modalCaption.style.display = 'none';
+    }
+    
+    // Update indicator dots
+    updateIndicatorDots();
+    
+    // Update counter
+    updateCounter();
+  }
+  
+  // Create indicator dots
+  function createIndicatorDots() {
+    // Clear existing dots
+    indicatorDots.innerHTML = '';
+    
+    // Create new dots
+    galleryItems.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === currentIndex) {
+        dot.classList.add('active');
+      }
+      
+      // Add click event to dot
+      dot.addEventListener('click', function() {
+        currentIndex = index;
+        updateModalContent();
+      });
+      
+      indicatorDots.appendChild(dot);
+    });
+  }
+  
+  // Update indicator dots
+  function updateIndicatorDots() {
+    const dots = indicatorDots.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+  
+  // Update counter
+  function updateCounter() {
+    const counterText = document.querySelector('.counter-text');
+    counterText.textContent = `${currentIndex + 1}/${galleryItems.length}`;
+  }
+  
+  // Next image
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    updateModalContent();
+  }
+  
+  // Previous image
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    updateModalContent();
+  }
+  
+  // Close modal
+  function closeModal() {
+    galleryModal.classList.remove('active');
+  }
+  
+  // Event listeners
+  nextButton.addEventListener('click', nextImage);
+  prevButton.addEventListener('click', prevImage);
+  closeButton.addEventListener('click', closeModal);
+  
+  // Close on escape key
+  document.addEventListener('keyup', function(e) {
+    if (e.key === 'Escape' && galleryModal.classList.contains('active')) {
+      closeModal();
+    } else if (e.key === 'ArrowRight' && galleryModal.classList.contains('active')) {
+      nextImage();
+    } else if (e.key === 'ArrowLeft' && galleryModal.classList.contains('active')) {
+      prevImage();
+    }
+  });
+  
+  // Close when clicking on modal background (not on content)
+  galleryModal.addEventListener('click', function(e) {
+    if (e.target === galleryModal) {
+      closeModal();
+    }
+  });
+});

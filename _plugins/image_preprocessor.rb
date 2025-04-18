@@ -143,7 +143,7 @@ end
 
 
 
-# Portfolio gallery
+# Portfolio polaroid gallery
 Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
   next unless doc.output_ext == '.html'
   
@@ -161,6 +161,37 @@ Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
       HTML
     end
     "<div class=\"polaroid-stack\">\n#{images.join("\n")}\n</div>"
+  end
+  
+  doc.content = content
+end
+
+
+
+# Portfolio gallery with captions
+# Gallery with modal view and captions
+Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
+  next unless doc.output_ext == '.html'
+  
+  content = doc.content.dup
+  
+  content.gsub!(/```gallery\s+(.+?)```/m) do
+    gallery_raw = Regexp.last_match(1).strip
+    images = gallery_raw.split("\n").map do |line|
+      path, caption = line.split('|').map(&:strip)
+      # Store caption in data attribute so we can access it in the modal
+      <<~HTML
+        <div class="gallery-item" data-src="#{path}" data-caption="#{caption || ''}">
+          <img src="#{path}" alt="#{caption || 'Gallery image'}" />
+        </div>
+      HTML
+    end
+    
+    <<~HTML
+<div class="gallery-container" id="gallery">
+  #{images.join("\n")}
+</div>
+    HTML
   end
   
   doc.content = content
