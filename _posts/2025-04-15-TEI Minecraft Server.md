@@ -24,7 +24,7 @@ As a level designer, my focus was mostly on **Skywars**, although I also contrib
 * **RailBusters** – An on-rails shooter that is still unique to the server.
 {% endcolumn %}
 {% column %}
-![[img/tei/stampy.jpg|Caption= Minecraft royalty Stampylongnose regularly played our levels!|class= shadow]]
+![[img/tei/stampy.jpg|Caption= Minecraft royalty Stampylongnose regularly played our levels!|class= polaroid]]
 {% endcolumn %}
 {% endcolumns %}
 {% columns %}
