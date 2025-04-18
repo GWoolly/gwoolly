@@ -115,6 +115,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+// Polaroid image rnadom rotation
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.polaroid').forEach(function(figure) {
+    const rotation = (Math.random() * 6) - 3; // random number between -3 and +3 degrees
+    figure.style.setProperty('--rotation', `${rotation}deg`);
+  });
+});
+
+
+
+
 // // Markdown tables to columns
 // document.addEventListener('DOMContentLoaded', function() {
   // // Find all tables in the document
