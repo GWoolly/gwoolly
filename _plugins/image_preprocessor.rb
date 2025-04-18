@@ -63,7 +63,7 @@
   # # doc.content = content
 # # end
 
-
+# Render images with tags
 Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
   next unless doc.output_ext == '.html'
 
@@ -137,5 +137,31 @@ content.gsub!(/!\[\[(.+?)\]\]/) do
 end
 
 
+  doc.content = content
+end
+
+
+
+
+# Portfolio gallery
+Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
+  next unless doc.output_ext == '.html'
+  
+  content = doc.content.dup
+  
+  content.gsub!(/```polaroid\s+(.+?)```/m) do
+    gallery_raw = Regexp.last_match(1).strip
+    images = gallery_raw.split("\n").map do |line|
+      path, caption = line.split('|').map(&:strip)
+      <<~HTML
+        <figure class="polaroid">
+          <img src="#{path}" alt="#{caption || 'Photo'}" />
+          <figcaption>#{caption}</figcaption>
+        </figure>
+      HTML
+    end
+    "<div class=\"polaroid-stack\">\n#{images.join("\n")}\n</div>"
+  end
+  
   doc.content = content
 end

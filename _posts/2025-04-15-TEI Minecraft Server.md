@@ -43,3 +43,13 @@ For Cloud-9, I wanted to address the common issue of early player elimination. M
 The result was longer, more strategic matches where players had choices to either take their time and build out, or risk an early push to the center.
 {% endcolumn %}
 {% endcolumns %}
+
+```polaroid
+img/vflects/bat.gif | vflects
+img/cr2/miro.png | chickens 🐥
+img/portfolio/Battletoads.jpg | Toads 🐸
+```
+
+```markdown
+# Heading
+```

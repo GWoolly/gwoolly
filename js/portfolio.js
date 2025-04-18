@@ -115,16 +115,153 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// Polaroid image rnadom rotation
+// Polaroid image random rotation
 document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll('.polaroid').forEach(function(figure) {
-    const rotation = (Math.random() * 6) - 3; // random number between -3 and +3 degrees
-    figure.style.setProperty('--rotation', `${rotation}deg`);
+  const stack = document.querySelector('.polaroid-stack');
+  let polaroids = Array.from(stack.querySelectorAll('.polaroid'));
+
+  // Initialize polaroids with random rotations
+  polaroids.forEach((polaroid, index) => {
+    const rotation = (Math.random() * 10) - 5;
+    polaroid.style.setProperty('--rotation', `${rotation}deg`);
+    polaroid.style.zIndex = polaroids.length - index;
+    polaroid.style.transform = 'rotate(var(--rotation))';
+    polaroid.style.transition = 'transform 0.3s ease';
+  });
+
+  let timer;
+  let isAnimating = false;
+  let isHovering = false;
+
+  function updateZIndices() {
+    polaroids.forEach((polaroid, index) => {
+      polaroid.style.zIndex = polaroids.length - index;
+    });
+  }
+
+  function moveTopPolaroidToBack() {
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    const topPolaroid = polaroids[0];
+    
+    // Step 1: Move right (translate right and up)
+    topPolaroid.style.transition = 'transform 0.4s ease';
+    topPolaroid.style.transform = 'translate(150%, -20%) rotate(20deg)';
+
+    setTimeout(() => {
+      // Lower its z-index midway
+      topPolaroid.style.zIndex = -1;
+      
+      // Generate the new rotation value here
+      const newRotation = (Math.random() * 10) - 5;
+      topPolaroid.style.setProperty('--rotation', `${newRotation}deg`);
+    }, 200);
+
+    setTimeout(() => {
+      // Step 2: Slide left (translate back to the stack)
+      // Use the new rotation value as part of the return animation
+      topPolaroid.style.transition = 'transform 0.6s ease';
+      topPolaroid.style.transform = 'translate(0, 0) rotate(var(--rotation))';
+
+      setTimeout(() => {
+        // Step 3: Rearrange DOM
+        stack.appendChild(topPolaroid);
+
+        // Update polaroid array
+        polaroids.push(polaroids.shift());
+        
+        // Update z-indexes
+        updateZIndices();
+        
+        // Animation is now complete
+        isAnimating = false;
+        
+        // Check if mouse left during animation
+        if (!isHovering) {
+          resetCardsPosition();
+        } else if (isHovering) {
+          // If still hovering, update fan position
+          applyFanEffect();
+        }
+
+      }, 600); // After sliding left completes
+
+    }, 400); // After moving right completes
+  }
+
+  function applyFanEffect() {
+    const spacing = 15; // Spacing between cards in pixels
+    const cardCount = polaroids.length;
+    
+    // Calculate total width of the fan
+    const totalWidth = (cardCount - 1) * spacing;
+    
+    // Calculate center adjustment to keep the stack centered when fanned
+    const centerAdjustment = totalWidth / 2;
+    
+    polaroids.forEach((polaroid, index) => {
+      // Calculate how far left this card should be from the top card
+      // Index 0 (top card) is at the rightmost position, with each subsequent card moving left
+      const offset = -index * spacing + centerAdjustment; // Adjusted to center the stack
+      
+      // Apply slight rotation based on position
+      const fanRotation = index * 2; // Each card rotates slightly more
+      
+      // Get the base rotation from the CSS variable
+      const baseRotation = parseFloat(polaroid.style.getPropertyValue('--rotation')) || 0;
+      
+      // Create transform combining horizontal offset and rotation
+      polaroid.style.transition = 'transform 0.3s ease';
+      polaroid.style.transform = `
+        translateX(${offset}px)
+        rotate(${baseRotation - fanRotation}deg)`; // Subtract for counterclockwise rotation
+    });
+  }
+  
+  function resetCardsPosition() {
+    polaroids.forEach((polaroid) => {
+      polaroid.style.transition = 'transform 0.3s ease';
+      polaroid.style.transform = 'rotate(var(--rotation))';
+    });
+  }
+
+  function startAutoAdvance() {
+    timer = setInterval(moveTopPolaroidToBack, 4000);
+  }
+
+  function resetAutoAdvance() {
+    clearInterval(timer);
+    startAutoAdvance();
+  }
+
+  startAutoAdvance();
+
+  stack.addEventListener('click', function(event) {
+    if (isAnimating) return;
+    
+    const topPolaroid = polaroids[0];
+    if (event.target.closest('.polaroid') === topPolaroid) {
+      moveTopPolaroidToBack();
+      resetAutoAdvance();
+    }
+  });
+
+  // Fan-out effect on hover
+  stack.addEventListener('mouseenter', function() {
+    isHovering = true;
+    if (!isAnimating) {
+      applyFanEffect();
+    }
+  });
+
+  stack.addEventListener('mouseleave', function() {
+    isHovering = false;
+    if (!isAnimating) {
+      resetCardsPosition();
+    }
   });
 });
-
-
-
 
 // // Markdown tables to columns
 // document.addEventListener('DOMContentLoaded', function() {
