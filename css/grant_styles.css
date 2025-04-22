@@ -1,15 +1,15 @@
 /* Jekyll Site table */
-.flex-column {
-  flex: 1 1 0 !important;
-  min-width: 300px; /* Ensures minimum width */
-  max-width: 50%; /* Ensures no column takes more than half */
-  padding: 15px;
-}
+/* .flex-column { */
+  /* flex: 1 1 0 !important; */
+  /* min-width: 300px; /* Ensures minimum width */ */
+  /* max-width: 50%; /* Ensures no column takes more than half */ */
+  /* padding: 15px; */
+/* } */
 
-/* Target specifically columns containing only images */
-.flex-column p:only-child img:only-child {
-  width: 100%;
-  height: auto;
+/* /* Target specifically columns containing only images */ */
+/* .flex-column p:only-child img:only-child { */
+  /* width: 100%; */
+  /* height: auto; */
 }
 
 img[style*="right"] {
@@ -118,8 +118,22 @@ figcaption {
   font-family: "Sriracha", cursive;
   font-weight: 400;
   font-style: normal;
-  font-size: 18px !important;
+  font-size: 18px;
 }
+
+/* Add media queries for responsive font size */
+@media screen and (max-width: 768px) {
+  .polaroid figcaption {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .polaroid figcaption {
+    font-size: 10px;
+  }
+}
+
 
 /* Polaroid Gallery */
 @keyframes popUp {

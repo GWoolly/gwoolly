@@ -5,6 +5,8 @@
     "tags": "tags",
     "category": "multitext",
     "release": "date",
-    "platforms": "text"
+    "platforms": "text",
+    "playable": "checkbox",
+    "links": "multitext"
   }
 }

@@ -3,12 +3,14 @@ layout: default
 modal-id: RS3-Croesus-Front
 date: 2021-9-27
 img: RS3-earth.png
-alt: Runescape Croesus Front
+title: RuneScape Croesus Front
 release: 2021-9-27
 platforms: PC / Mobile
 client: Jagex
 category:
   - QA
 description: QA Tester
-link: https://www.aardman.com/film-tv-games/chicken-run-eggstraction/
+link_info: 
+links:
+  - https://www.aardman.com/film-tv-games/chicken-run-eggstraction/
 ---

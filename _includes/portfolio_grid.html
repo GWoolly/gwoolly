@@ -16,19 +16,27 @@
 	</div>
 	
 	<!-- Portfolio Grid -->
-    <div class="portfolio-flex-row">
-		{% for post in site.posts %}
-			<div class="portfolio-flex-item portfolio-item" data-category="{{ post.category | join: ',' }}">
-				<div class="portfolio-wrapper">
-					<a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
-					<div class="caption">
-						<div class="caption-content"></div>
-					</div>
-					<img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
-					</a>
-				</div>
-			</div>
-		{% endfor %}
+	<div class="portfolio-flex-row">
+	  {% for post in site.posts %}
+		<div class="portfolio-flex-item portfolio-item" data-category="{{ post.category | join: ',' }}">
+		
+		  <div class="portfolio-wrapper">
+			<a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
+			  <div class="caption">
+				<div class="caption-content">{{ post.title }}</div>
+			  </div>
+			  <div class="thumbnail-container">
+				<img src="img/portfolio/{{ post.img }}" class="img-responsive"> <!-- alt="{{ post.alt }}" -->
+				{% if post.badge %}
+				<img src="{{ post.badge }}" class="badge-icon" alt="Badge icon">
+				{% endif %}
+			  </div>
+			</a>
+		  </div>
+		</div>
+	  {% endfor %}
+	</div>
+
 
 	
 	</div>

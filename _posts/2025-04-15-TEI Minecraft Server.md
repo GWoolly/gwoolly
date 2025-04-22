@@ -2,7 +2,7 @@
 modal-id: TEI-minecraft
 img: TEI.png
 video: 
-alt: The Enchanted Isle - Minecraft Server
+title: The Enchanted Isle - Minecraft Server
 secret: false
 date: 2014-12-10
 layout: default
@@ -10,7 +10,7 @@ client: The Enchanted Isle
 category:
   - Design
 description: Level Designer
-Platforms: Minecraft
+badge: img/icons/star.png
 ---
 **The Enchanted Isle (TEI)** was a well-known Minecraft server that stood out for its inventive game modes and custom-designed maps, which frequently attracted many popular YouTubers, notably **Stampylongnose** and **The Yogscast**. 
 {% columns %}

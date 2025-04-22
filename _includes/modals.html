@@ -73,117 +73,71 @@
                 </div>
               {% endif %}	 
 
-<!-- Platforms Released -->
-{% assign platform_count = 0 %}
-{% if post.steam != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
-{% if post.google != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
-{% if post.apple != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
-{% if post.playstation != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
-{% if post.xbox != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
-{% if post.switch != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
-{% if post.itch != nil %}{% assign platform_count = platform_count | plus: 1 %}{% endif %}
 
-{% if platform_count == 0 %}
-  <div class="platform-icons text-center mt-4 mb-4">
-    <h4>Platforms Unannounced</h4>
-  </div>
-{% else %}
-  <div class="platform-icons text-center mt-4 mb-4">
-    <h4>Available On</h4>
-    <div class="icon-container">
-      {% if post.apple != nil %}
-        {% assign url_length = post.apple | strip | size %}
-        {% if url_length > 1 and post.apple != "." %}
-          <a href="{{ post.apple }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon" title="Apple Store">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/AppleStore.svg" alt="Apple Store" class="platform-icon disabled" title="Apple Store">
-          </span>
-        {% endif %}
-      {% endif %}
-      
-      {% if post.google != nil %}
-        {% assign url_length = post.google | strip | size %}
-        {% if url_length > 1 and post.google != "." %}
-          <a href="{{ post.google }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon" title="Google Play">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/GoogleStore.svg" alt="Google Play" class="platform-icon disabled" title="Google Play">
-          </span>
-        {% endif %}
-      {% endif %}
-      
-      {% if post.playstation != nil %}
-        {% assign url_length = post.playstation | strip | size %}
-        {% if url_length > 1 and post.playstation != "." %}
-          <a href="{{ post.playstation }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation" title="PlayStation">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/PS.svg" alt="PlayStation" class="platform-icon playstation disabled" title="PlayStation">
-          </span>
-        {% endif %}
-      {% endif %}
-      
-      {% if post.steam != nil %}
-        {% assign url_length = post.steam | strip | size %}
-        {% if url_length > 1 and post.steam != "." %}
-          <a href="{{ post.steam }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon" title="Steam">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/Steam.svg" alt="Steam" class="platform-icon disabled" title="Steam">
-          </span>
-        {% endif %}
-      {% endif %}
-      
-      {% if post.switch != nil %}
-        {% assign url_length = post.switch | strip | size %}
-        {% if url_length > 1 and post.switch != "." %}
-          <a href="{{ post.switch }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch" title="Nintendo Switch">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/Switch.svg" alt="Nintendo Switch" class="platform-icon switch disabled" title="Nintendo Switch">
-          </span>
-        {% endif %}
-      {% endif %}
-      
-      {% if post.xbox != nil %}
-        {% assign url_length = post.xbox | strip | size %}
-        {% if url_length > 1 and post.xbox != "." %}
-          <a href="{{ post.xbox }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/Xbox.svg" alt="Xbox" class="platform-icon xbox" title="Xbox">
-          </span>
-        {% endif %}
-      {% endif %}
-      
-      {% if post.itch != nil %}
-        {% assign url_length = post.itch | strip | size %}
-        {% if url_length > 1 and post.itch != "." %}
-          <a href="{{ post.itch }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-            <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
-          </a>
-        {% else %}
-          <span class="platform-link disabled">
-            <img src="img/icons/itch.svg" alt="itch.io" class="platform-icon" title="itch.io">
-          </span>
-        {% endif %}
-      {% endif %}
-    </div>
-  </div>
-{% endif %}
+
+			<!-- Set default post.link_info when not available -->
+			{% if post.link_info == nil %}
+				{% assign post.link_info = "" %}
+			{% endif %}
+
+			<!-- Dynamically find storefront icons for post.links -->
+			<div class="platform-icons text-center mt-4 mb-4">
+			  <h4>{{ post.link_info }}</h4>
+			  <div class="icon-container">
+			  
+			  <!-- Add new icons here, note that you must use the storefront's url as the key in order for the url to be matched with its icon! -->
+			  {% assign icons = "
+			  steam:Steam.svg,
+			  nintendo:Switch.svg,
+			  xbox:Xbox.svg,
+			  playstation:PS.svg,
+			  itch:itch.svg,
+			  apple:AppleStore.svg,
+			  google:GoogleStore.svg
+			  " | split: "," %}
+			  
+			  <!-- Find link icon -->
+			  {% for link in post.links %}
+				{% assign link = link | strip | remove_first: "powered" %}
+				
+				<!-- Assign default link icon -->
+				{% assign icon_img = "link.svg" %}
+				{% assign icon_name = "Link" %}
+				{% assign icon_class = "" %}
+				
+				<!-- Check each icon keyword against the full link -->
+				{% for icon in icons %}
+				  {% assign pair = icon | strip | split: ":" %}
+				  {% assign key = pair[0] | strip %}
+				  {% assign value = pair[1] | strip %}
+				  
+				  {% if link contains key %}
+					{% assign icon_img = value %}
+					{% assign icon_name = key | capitalize %}
+					{% assign icon_class = key | downcase %}
+				  
+				  {% else %}
+				  <!-- Assign URL as alt text -->
+				  {% assign icon_name = link %}
+				  {% endif %}
+				{% endfor %}
+				
+				{% if link contains "." %}
+				  <a href="{{ link }}" target="_blank" rel="noopener noreferrer" class="platform-link">
+					<img src="img/icons/{{icon_img}}" alt="{{icon_name}}" class="platform-icon {{icon_class}}" title="{{icon_name}}">
+				  </a>
+				{% else %}
+				  <span class="platform-link disabled">
+					<img src="img/icons/{{icon_img}}" alt="{{icon_name}}" class="platform-icon disabled" title="{{icon_name}}">
+				  </span>
+				{% endif %}
+			  {% endfor %}
+			  </div>
+			</div>
+			
+			
+			<hr>
+			
 			
               <!-- Brief Description -->
               {% if post.description %}
