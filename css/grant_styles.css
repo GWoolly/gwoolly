@@ -121,7 +121,7 @@ figcaption {
   font-size: 18px;
 }
 
-/* Add media queries for responsive font size */
+/* Add media queries for responsive caption font size */
 @media screen and (max-width: 768px) {
   .polaroid figcaption {
     font-size: 12px;
