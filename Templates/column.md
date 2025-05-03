@@ -1,8 +1,8 @@
 {% columns %}
-{% column %}<!-- C1 -->
+{% column %}
+LEFT
 {% endcolumn %}
-{% column %}<!-- C2 -->
-{% endcolumn %}
-{% column %}<!-- C3 -->
+{% column %}
+RIGHT
 {% endcolumn %}
 {% endcolumns %}

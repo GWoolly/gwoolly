@@ -15,6 +15,9 @@ Platforms: '[{"name":"steam","url":"http://www.google.co.uk"}]'
 ---
 {% columns %}
 {% column %}
-Content
+LEFT
+{% endcolumn %}
+{% column %}
+RIGHT
 {% endcolumn %}
 {% endcolumns %}
