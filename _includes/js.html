@@ -36,8 +36,7 @@
 
 
 <!-- 100% privacy-first analytics -->
-const disallowedReferrer = 'https://gwoolly.github.io/gwoolly/';
-if (document.referrer !== disallowedReferrer) {
+if (document.referrer.includes("github.io") == false) {
 	const script = document.createElement('script');
 	script.src = 'https://scripts.simpleanalyticscdn.com/latest.js';
 	script.async = true;
