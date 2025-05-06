@@ -22,7 +22,7 @@
     };
 
     // Send data to your Google Apps Script Web App
-    fetch('https://script.google.com/macros/library/d/1Wnz2d9sReHlCchsGSuMTOZpzc-624QcDnl2Z0dzKWzx_2h4-mlOcUnz5/1', {
+    fetch('https://script.google.com/macros/s/AKfycbxYO3TDDGsr9GvLlNbXbkqr7ka6ixm3sI__kWtUBwfsH_6rCHqAbex0zJUklusQoI_bRA/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: {
