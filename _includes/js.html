@@ -36,9 +36,14 @@
 
 
 <!-- 100% privacy-first analytics -->
-<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-
-<script src="{{ " js/analystics.js" }}"></script>
+const disallowedReferrer = 'https://gwoolly.github.io/gwoolly/';
+if (document.referrer !== disallowedReferrer) {
+	const script = document.createElement('script');
+	script.src = 'https://scripts.simpleanalyticscdn.com/latest.js';
+	script.async = true;
+	script.setAttribute('data-collect-dnt', 'true');
+	document.head.appendChild(script);
+}
 
 
 
