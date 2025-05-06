@@ -17,19 +17,28 @@
 <script src="{{ " js/contact_me.js" }}"></script>
 {% endif %}
 
+{% if site.contact == "disqus" %}
+<!-- Disqus Stuff -->
+{% include js_disqus.html %}
+{% endif %}
+
+
+
 <!-- Custom Theme JavaScript -->
 <script src="{{ " js/freelancer.js" }}"></script>
 
 <!-- Grant's Stuff -->
 <script src="{{ " js/videoPlayer.js" }}"></script>
 <script src="{{ " js/portfolio.js" }}"></script>
- <!-- better modal handling -->
-<script src="{{ " js/modals.js" }}"></script>
+ 
+ 
+<script src="{{ " js/modals.js" }}"></script><!-- better modal handling -->
+
+
+<!-- 100% privacy-first analytics -->
+<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+<script src="{{ " js/analystics.js" }}"></script>
 
 
 
-
-{% if site.contact == "disqus" %}
-<!-- Disqus Stuff -->
-{% include js_disqus.html %}
-{% endif %}
