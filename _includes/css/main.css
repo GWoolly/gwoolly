@@ -713,7 +713,10 @@ hr.star-div {
       currentColor 100%
     );
     position: relative;
+	
+	/* Graphics */
     --hr-icon: "\f005"; /* Default icon: star */
+	--hr-image: none; /* Default image: No image*/
 }
 
 hr.star-div:after {
@@ -731,6 +734,48 @@ hr.star-div:after {
     z-index: 1;
 }
 
+/* SVG support */
+hr.star-div.svg:after {
+    content: "";
+    background-color: transparent;
+    background-image: var(--hr-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: calc(2em * var(--svg-scale)); /* Scaled width */
+    height: calc(2em * var(--svg-scale)); /* Scaled height */
+    top: calc( -1em * var(--svg-scale)); /* Adjusted vertical position */
+    font-size: 1em; /* Reset font size for images */
+    mask-image: var(--hr-image);
+    -webkit-mask-image: var(--hr-image);
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    background-image: none;
+    background-color: currentColor; /* This makes the SVG inherit the color */
+}
+
+hr.star-div.image:after {
+	content: ""; /* Remove font-awesome icon */
+	background-image: var(--hr-image);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	
+	width: 2em;
+	height: 2em;
+	top: -1em;
+	font-size: 1em; /* reset front size for images */
+	
+	mask-image: none;
+    -webkit-mask-image: none;
+	background-color: transparent;
+}
+
+/* Font Awesome dividers */
 hr.star-div.bug {
     --hr-icon: "\f188"; /* Bug icon */
 }
@@ -745,6 +790,12 @@ hr.star-div.puzzle {
 
 hr.star-div.gears {
 	--hr-icon: "\f085";
+}
+
+/* Image Dividers */
+hr.star-div.svg-check {
+	--hr-image: url('img/icons/verified.svg');
+	--svg-scale: 1.25;
 }
 
 

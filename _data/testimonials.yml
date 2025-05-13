@@ -1,0 +1,24 @@
+# Testimonials data file
+# Path: _data/testimonials.yml
+# 
+# Each testimonial should have:
+# - name: Person's full name
+# - position: Their job title and company
+# - image: Path to their profile image (recommended square aspect ratio)
+# - quote: Their testimonial text (without quotation marks)
+
+- name: Richard Jones
+  position: Senior Global Test Manager at Lionbridge
+  image: img/testimonials/richard_jones.jpeg
+  quote: Excellent testing ability matched with high levels of dedication. Good understanding of games and how they work - he is always eager to learn more. I was disappointed that I was unable to keep Grant on when his project ended.
+
+- name: Gareth Rogers
+  position: Principal Quality Manager at Xbox Studios
+  image: img/testimonials/gareth_rogers.jpeg
+  quote: Grant is one of the most detail focused testers I have ever had the pleasure of working with. His understanding of how games are made helps him to identify issues and provide enough information for the development team to address them, often including recommendations of how they can be fixed. If you are looking for a tester with exceptional eye for detail then I would highly recommend Grant!
+
+# Add more testimonials as needed
+# - name: Another Person
+#   position: Their Position
+#   image: /path/to/image.jpg
+#   quote: Their testimonial text.

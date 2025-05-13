@@ -1,0 +1,150 @@
+{% comment %}
+  File: _includes/testimonials.html
+  
+  This include displays a testimonials section using data from _data/testimonials.yml
+  The section will only be displayed if testimonials are present
+{% endcomment %}
+{% if site.data.testimonials and site.data.testimonials.size > 0 %}
+<!-- Testimonials Section -->
+<section class="success" id="testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Testimonials</h2>
+        <hr class="star-div svg svg-check">
+      </div>
+    </div>
+    
+    <div class="row testimonials-container">
+      {% for testimonial in site.data.testimonials %}
+      <!-- Testimonial {{ forloop.index }} -->
+      <div class="col-md-6">
+        <div class="testimonial-box">
+          <div class="testimonial-header">
+            <div class="testimonial-image">
+              <img src="{{ testimonial.image }}" alt="{{ testimonial.name }}" class="img-circle">
+            </div>
+            <div class="testimonial-person">
+              <h4>{{ testimonial.name }}</h4>
+              <p class="testimonial-position">{{ testimonial.position }}</p>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <div class="quote-container">
+              <i class="fas fa-quote-left quote-icon-left"></i>
+              <p class="quote-text">{{ testimonial.quote }}</p>
+              <i class="fas fa-quote-right quote-icon-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+  /* Testimonial Section Styling */
+  #testimonials {
+    padding: 40px;
+	background: #{{site.color.secondary}} !important;
+  }
+  
+  .testimonials-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .testimonial-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+  
+  .testimonial-image {
+    margin-right: 15px;
+  }
+  
+  .testimonial-image img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .img-circle {
+    border-radius: 50%;
+  }
+  
+  .testimonial-person h4 {
+    margin: 0 0 5px 0;
+    font-weight: 600;
+  }
+  
+  .testimonial-position {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin: 0;
+  }
+  
+  .testimonial-content {
+    flex-grow: 0.5;
+    display: flex;
+    align-items: center;
+	margin-top: 10px;
+  }
+  
+  .quote-container {
+    position: relative;
+    padding: 10px 25px;
+    width: 100%;
+  }
+  
+  .quote-icon-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2em;
+  }
+  
+  .quote-icon-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2em;
+  }
+  
+  .quote-text {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* Equal height columns */
+  .col-md-6 {
+    display: flex;
+    margin-bottom: 30px;
+    max-width: 500px;
+  }
+  
+  /* For smaller screens, ensure proper stacking */
+  @media (max-width: 991px) {
+    .col-md-6 {
+      width: 100%;
+    }
+  }
+</style>
+{% endif %}
