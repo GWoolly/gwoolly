@@ -85,16 +85,8 @@
 			  <h4>{{ post.link_info }}</h4>
 			  <div class="icon-container">
 			  
-			  <!-- Add new icons here, note that you must use the storefront's url as the key in order for the url to be matched with its icon! -->
-			  {% assign icons = "
-			  steam:Steam.svg,
-			  nintendo:Switch.svg,
-			  xbox:Xbox.svg,
-			  playstation:PS.svg,
-			  itch:itch.svg,
-			  apple:AppleStore.svg,
-			  google:GoogleStore.svg
-			  " | split: "," %}
+			  <!-- Using site-wide icon definitions from _data/icons.yml -->
+			  {% assign icons = site.data.icons %}
 			  
 			  <!-- Find link icon -->
 			  {% for link in post.links %}
@@ -106,29 +98,25 @@
 				{% assign icon_class = "" %}
 				
 				<!-- Check each icon keyword against the full link -->
-				{% for icon in icons %}
-				  {% assign pair = icon | strip | split: ":" %}
-				  {% assign key = pair[0] | strip %}
-				  {% assign value = pair[1] | strip %}
+				{% for icon_pair in icons %}
+				  {% assign key = icon_pair[0] | strip %}
+				  {% assign value = icon_pair[1] | strip %}
 				  
 				  {% if link contains key %}
 					{% assign icon_img = value %}
 					{% assign icon_name = key | capitalize %}
 					{% assign icon_class = key | downcase %}
-				  
-				  {% else %}
-				  <!-- Assign URL as alt text -->
-				  {% assign icon_name = link %}
+					{% break %}
 				  {% endif %}
 				{% endfor %}
 				
 				{% if link contains "." %}
 				  <a href="{{ link }}" target="_blank" rel="noopener noreferrer" class="platform-link">
-					<img src="img/icons/{{icon_img}}" alt="{{icon_name}}" class="platform-icon {{icon_class}}" title="{{icon_name}}">
+					<img src="{{ site.baseurl }}/img/icons/{{ icon_img }}" alt="{{ icon_name }}" class="button-icon {{ icon_class }}" title="{{ icon_name }}">
 				  </a>
 				{% else %}
 				  <span class="platform-link disabled">
-					<img src="img/icons/{{icon_img}}" alt="{{icon_name}}" class="platform-icon disabled" title="{{icon_name}}">
+					<img src="{{ site.baseurl }}/img/icons/{{ icon_img }}" alt="{{ icon_name }}" class="button-icon disabled" title="{{ icon_name }}">
 				  </span>
 				{% endif %}
 			  {% endfor %}

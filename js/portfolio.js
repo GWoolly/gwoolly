@@ -338,156 +338,156 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Gallery
-document.addEventListener('DOMContentLoaded', function() {
-  // Gallery variables
-  const galleryModal = document.getElementById('gallery-modal');
-  const modalImage = document.getElementById('modal-image');
-  const modalCaption = document.getElementById('modal-caption');
-  const prevButton = document.getElementById('prev-button');
-  const nextButton = document.getElementById('next-button');
-  const closeButton = document.querySelector('.close-gallery');
-  const imageCounter = document.getElementById('image-counter');
-  const indicatorDots = document.getElementById('indicator-dots');
+// // Gallery
+// document.addEventListener('DOMContentLoaded', function() {
+  // // Gallery variables
+  // const galleryModal = document.getElementById('gallery-modal');
+  // const modalImage = document.getElementById('modal-image');
+  // const modalCaption = document.getElementById('modal-caption');
+  // const prevButton = document.getElementById('prev-button');
+  // const nextButton = document.getElementById('next-button');
+  // const closeButton = document.querySelector('.close-gallery');
+  // const imageCounter = document.getElementById('image-counter');
+  // const indicatorDots = document.getElementById('indicator-dots');
   
-  let galleryItems = [];
-  let currentIndex = 0;
+  // let galleryItems = [];
+  // let currentIndex = 0;
   
-  // Initialize galleries
-  const galleryContainers = document.querySelectorAll('.gallery-container');
+  // // Initialize galleries
+  // const galleryContainers = document.querySelectorAll('.gallery-container');
   
-  galleryContainers.forEach(container => {
-    const items = container.querySelectorAll('.gallery-item');
+  // galleryContainers.forEach(container => {
+    // const items = container.querySelectorAll('.gallery-item');
     
-    items.forEach((item, index) => {
-      // Add click event to open modal
-      item.addEventListener('click', function() {
-        openGalleryModal(container, index);
-      });
-    });
-  });
+    // items.forEach((item, index) => {
+      // // Add click event to open modal
+      // item.addEventListener('click', function() {
+        // openGalleryModal(container, index);
+      // });
+    // });
+  // });
   
-  // Open gallery modal
-  function openGalleryModal(container, startIndex) {
-    // Get all items in this gallery
-    galleryItems = Array.from(container.querySelectorAll('.gallery-item'));
-    currentIndex = startIndex;
+  // // Open gallery modal
+  // function openGalleryModal(container, startIndex) {
+    // // Get all items in this gallery
+    // galleryItems = Array.from(container.querySelectorAll('.gallery-item'));
+    // currentIndex = startIndex;
     
-    // Show modal
-    galleryModal.classList.add('active');
+    // // Show modal
+    // galleryModal.classList.add('active');
     
-    // Update image and caption
-    updateModalContent();
+    // // Update image and caption
+    // updateModalContent();
     
-    // Create indicator dots
-    createIndicatorDots();
+    // // Create indicator dots
+    // createIndicatorDots();
     
-    // Update counter
-    updateCounter();
-  }
+    // // Update counter
+    // updateCounter();
+  // }
   
-  // Update modal image and caption
-  function updateModalContent() {
-    const currentItem = galleryItems[currentIndex];
-    const imageSrc = currentItem.getAttribute('data-src');
-    const imageCaption = currentItem.getAttribute('data-caption');
+  // // Update modal image and caption
+  // function updateModalContent() {
+    // const currentItem = galleryItems[currentIndex];
+    // const imageSrc = currentItem.getAttribute('data-src');
+    // const imageCaption = currentItem.getAttribute('data-caption');
     
-    modalImage.src = imageSrc;
-    modalImage.alt = imageCaption || 'Gallery image';
+    // modalImage.src = imageSrc;
+    // modalImage.alt = imageCaption || 'Gallery image';
     
-    // Update caption
-    if (imageCaption && imageCaption.trim() !== '') {
-      modalCaption.textContent = imageCaption;
-      modalCaption.style.display = 'block';
-    } else {
-      modalCaption.style.display = 'none';
-    }
+    // // Update caption
+    // if (imageCaption && imageCaption.trim() !== '') {
+      // modalCaption.textContent = imageCaption;
+      // modalCaption.style.display = 'block';
+    // } else {
+      // modalCaption.style.display = 'none';
+    // }
     
-    // Update indicator dots
-    updateIndicatorDots();
+    // // Update indicator dots
+    // updateIndicatorDots();
     
-    // Update counter
-    updateCounter();
-  }
+    // // Update counter
+    // updateCounter();
+  // }
   
-  // Create indicator dots
-  function createIndicatorDots() {
-    // Clear existing dots
-    indicatorDots.innerHTML = '';
+  // // Create indicator dots
+  // function createIndicatorDots() {
+    // // Clear existing dots
+    // indicatorDots.innerHTML = '';
     
-    // Create new dots
-    galleryItems.forEach((_, index) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (index === currentIndex) {
-        dot.classList.add('active');
-      }
+    // // Create new dots
+    // galleryItems.forEach((_, index) => {
+      // const dot = document.createElement('div');
+      // dot.classList.add('dot');
+      // if (index === currentIndex) {
+        // dot.classList.add('active');
+      // }
       
-      // Add click event to dot
-      dot.addEventListener('click', function() {
-        currentIndex = index;
-        updateModalContent();
-      });
+      // // Add click event to dot
+      // dot.addEventListener('click', function() {
+        // currentIndex = index;
+        // updateModalContent();
+      // });
       
-      indicatorDots.appendChild(dot);
-    });
-  }
+      // indicatorDots.appendChild(dot);
+    // });
+  // }
   
-  // Update indicator dots
-  function updateIndicatorDots() {
-    const dots = indicatorDots.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-      if (index === currentIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-  }
+  // // Update indicator dots
+  // function updateIndicatorDots() {
+    // const dots = indicatorDots.querySelectorAll('.dot');
+    // dots.forEach((dot, index) => {
+      // if (index === currentIndex) {
+        // dot.classList.add('active');
+      // } else {
+        // dot.classList.remove('active');
+      // }
+    // });
+  // }
   
-  // Update counter
-  function updateCounter() {
-    const counterText = document.querySelector('.counter-text');
-    counterText.textContent = `${currentIndex + 1}/${galleryItems.length}`;
-  }
+  // // Update counter
+  // function updateCounter() {
+    // const counterText = document.querySelector('.counter-text');
+    // counterText.textContent = `${currentIndex + 1}/${galleryItems.length}`;
+  // }
   
-  // Next image
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % galleryItems.length;
-    updateModalContent();
-  }
+  // // Next image
+  // function nextImage() {
+    // currentIndex = (currentIndex + 1) % galleryItems.length;
+    // updateModalContent();
+  // }
   
-  // Previous image
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-    updateModalContent();
-  }
+  // // Previous image
+  // function prevImage() {
+    // currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    // updateModalContent();
+  // }
   
-  // Close modal
-  function closeModal() {
-    galleryModal.classList.remove('active');
-  }
+  // // Close modal
+  // function closeModal() {
+    // galleryModal.classList.remove('active');
+  // }
   
-  // Event listeners
-  nextButton.addEventListener('click', nextImage);
-  prevButton.addEventListener('click', prevImage);
-  closeButton.addEventListener('click', closeModal);
+  // // Event listeners
+  // nextButton.addEventListener('click', nextImage);
+  // prevButton.addEventListener('click', prevImage);
+  // closeButton.addEventListener('click', closeModal);
   
-  // Close on escape key
-  document.addEventListener('keyup', function(e) {
-    if (e.key === 'Escape' && galleryModal.classList.contains('active')) {
-      closeModal();
-    } else if (e.key === 'ArrowRight' && galleryModal.classList.contains('active')) {
-      nextImage();
-    } else if (e.key === 'ArrowLeft' && galleryModal.classList.contains('active')) {
-      prevImage();
-    }
-  });
+  // // Close on escape key
+  // document.addEventListener('keyup', function(e) {
+    // if (e.key === 'Escape' && galleryModal.classList.contains('active')) {
+      // closeModal();
+    // } else if (e.key === 'ArrowRight' && galleryModal.classList.contains('active')) {
+      // nextImage();
+    // } else if (e.key === 'ArrowLeft' && galleryModal.classList.contains('active')) {
+      // prevImage();
+    // }
+  // });
   
-  // Close when clicking on modal background (not on content)
-  galleryModal.addEventListener('click', function(e) {
-    if (e.target === galleryModal) {
-      closeModal();
-    }
-  });
-});
+  // // Close when clicking on modal background (not on content)
+  // galleryModal.addEventListener('click', function(e) {
+    // if (e.target === galleryModal) {
+      // closeModal();
+    // }
+  // });
+// });

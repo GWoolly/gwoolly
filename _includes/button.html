@@ -1,0 +1,65 @@
+{% comment %}
+  Universal button include for consistent styling and icon assignment
+  
+  Usage:
+  {% include button.html url="https://example.com" text="Button Text" %}
+  
+  Optional parameters:
+  - class: Additional CSS classes
+  - icon: Force a specific icon
+  - new_tab: Set to "true" to open in new tab (default)
+{% endcomment %}
+
+{% assign url = include.url | strip %}
+{% assign text = include.text | default: "Visit Link" %}
+{% assign new_tab = include.new_tab | default: "true" %}
+{% assign custom_class = include.class | default: "" %}
+
+{% comment %} Define icons centrally for the entire site {% endcomment %}
+{% assign site_icons = site.data.icons | default: "
+steam:Steam.svg,
+nintendo:Switch.svg,
+xbox:Xbox.svg,
+playstation:PS.svg,
+itch:itch.svg,
+apple:AppleStore.svg,
+google:GoogleStore.svg,
+github:github.svg,
+twitter:twitter.svg,
+facebook:facebook.svg,
+instagram:instagram.svg,
+youtube:youtube.svg,
+linkedin:linkedin.svg
+" | split: "," %}
+
+{% comment %} Assign default icon {% endcomment %}
+{% assign icon_img = "link.svg" %}
+{% assign icon_name = "Link" %}
+{% assign icon_class = "" %}
+
+{% comment %} Check for forced icon {% endcomment %}
+{% if include.icon %}
+  {% assign icon_img = include.icon %}
+  {% assign icon_name = include.icon | split: "." | first | capitalize %}
+  {% assign icon_class = icon_name | downcase %}
+{% else %}
+  {% comment %} Auto-detect icon from URL {% endcomment %}
+  {% for icon in site_icons %}
+    {% assign pair = icon | strip | split: ":" %}
+    {% assign key = pair[0] | strip %}
+    {% assign value = pair[1] | strip %}
+    
+    {% if url contains key %}
+      {% assign icon_img = value %}
+      {% assign icon_name = key | capitalize %}
+      {% assign icon_class = key | downcase %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} Create button with icon {% endcomment %}
+<a href="{{ url }}" {% if new_tab == "true" %}target="_blank" rel="noopener noreferrer"{% endif %} class="site-button {{ icon_class }} {{ custom_class }}">
+  <img src="{{ site.baseurl }}/img/icons/{{ icon_img }}" alt="{{ icon_name }}" class="button-icon">
+  <span class="button-text">{{ text }}</span>
+</a>

@@ -14,7 +14,7 @@ link_info: Coming Soon
 links:
   - steam
 ---
-While working as QA Lead on **Chicken Run 2: Eggstraction**, I was given the opportunity to develop and apply my level design skills thanks to the supportive, cross-disciplinary culture at **Aardman Animations**. The Games & Interactive team encouraged personal growth and creative contribution across roles, which allowed me to take a more active hand in shaping gameplay spaces and systems.
+-++++----------------------------------While working as QA Lead on **Chicken Run 2: Eggstraction**, I was given the opportunity to develop and apply my level design skills thanks to the supportive, cross-disciplinary culture at **Aardman Animations**. The Games & Interactive team encouraged personal growth and creative contribution across roles, which allowed me to take a more active hand in shaping gameplay spaces and systems.
 
 {% columns %}
 {% column %}

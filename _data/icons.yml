@@ -1,0 +1,16 @@
+# Site-wide icon definitions
+# Format: domain_keyword: icon_filename.svg
+
+steam: Steam.svg
+nintendo: Switch.svg
+xbox: Xbox.svg
+playstation: PS.svg
+itch: itch.svg
+apple: AppleStore.svg
+google: GoogleStore.svg
+# github: GitHub_Logo.png
+twitter: twitter.svg
+facebook: facebook.svg
+instagram: instagram.svg
+youtube: youtube.svg
+linkedin: linkedin.svg

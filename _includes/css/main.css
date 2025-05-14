@@ -1012,7 +1012,7 @@ hr.star-div.svg-check {
 }
 
 /* Icon wrapper */
-.platform-icon {
+.button-icon {
   display: flex; /* center svg inside */
   align-items: center;
   justify-content: center;
@@ -1027,8 +1027,8 @@ hr.star-div.svg-check {
 }
 
 /* SVG or IMG inside */
-.platform-icon > svg,
-.platform-icon > img {
+.button-icon > svg,
+.button-icon > img {
   height: 100%; /* fill available height */
   width: auto; /* natural width */
   max-height: 100%; /* never overflow */
@@ -1037,26 +1037,26 @@ hr.star-div.svg-check {
 }
 
 /* Optional: Scale on hover, but only if it has a link! */
-.platform-icon:not(.disabled):hover {
+.button-icon:not(.disabled):hover {
   transform: scale(1.1);
 }
 
 /* Grey out any platform icons that don't have a link */
-.platform-icon.disabled {
+.button-icon.disabled {
   opacity: 0.5;
 }
 
 /* ===== CUSTOM COLOURS FOR PLATFORMS ===== */
 /* Use this tool to convert hex/rgb colours to a css color filter: https://angel-rs.github.io/css-color-filter-generator/ */
-.platform-icon.nintendo:hover {
+.button-icon.nintendo:hover {
   filter: invert(8%) sepia(78%) saturate(6768%) hue-rotate(351deg) brightness(119%) contrast(111%);
 }
 
-.platform-icon.playstation:hover {
+.button-icon.playstation:hover {
   filter: invert(37%) sepia(42%) saturate(941%) hue-rotate(206deg) brightness(95%) contrast(80%);
 }
 
-.platform-icon.xbox:hover {
+.button-icon.xbox:hover {
   filter: invert(19%) sepia(97%) saturate(5266%) hue-rotate(102deg) brightness(98%) contrast(90%);
 }
 

@@ -1,0 +1,12 @@
+{% comment %}
+  Simple button shortcode implementation
+  
+  Usage: {% button https://www.github.com %}
+  Or with text: {% button https://www.github.com GitHub %}
+{% endcomment %}
+
+{% assign parts = include.button | split: " " %}
+{% assign url = parts[0] | strip %}
+{% assign text = parts[1] | default: url | strip %}
+
+{% include button.html url=url text=text %}
