@@ -22,6 +22,7 @@ Thanks to Aardman’s collaborative, cross-disciplinary culture, I was selected 
 As the game’s production quality grew, we began porting it from a mobile-exclusive title to PC and console platforms. I noticed the front-end still heavily catered to mobile conventions and lacked a dedicated space for players to safely explore mechanics. In response, I proposed a **training hub**: a compact, explorable area where players could freely experiment with equipment, practice core mechanics, and engage in light challenges, whilst unwinding from the game's main campaign.
 
 Due to scope limitations, the original concept was scaled down, but it laid the foundation for the final **Training Ground** level, which is a standalone level where players could try out weapons and abilities against training dummies modelled after in-game enemies, without the risk of failure or consequence.
+![[img/cr2/ShopItemsGym_Final.png]]
 {% endcolumn %}
 {% column %}
 ![[img/cr2/miro.png|caption= First pass of the hub world designed in Miro|class= bordered]]
@@ -29,7 +30,7 @@ Due to scope limitations, the original concept was scaled down, but it laid the 
 {% endcolumns %}
 {% columns %}
 {% column %}
-Training ground image
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/aD_zPjOEe3M?si=1EczAZf42dfRF4tC&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 {% endcolumn %}
 {% column %}
 The basis for this level design originated from a large-scale test map I had developed to support QA, engineering, and design. This map contained all unit tests used in the game and was created using our in-house procedural generation tools. I designed targeted scenarios to validate new features, simulate full gameplay loops, and troubleshoot edge cases.
@@ -45,14 +46,14 @@ To support more advanced testing conditions, I implemented interactive logic bet
 To streamline playtesting and debugging, I improved and extended the debug UI using Unreal Engine’s Blueprint and Widget Blueprint (WBP) systems, along with integrated data tables. I built interactive panels that allowed testers and developers to control game states, modify user data such as character and level progress, acquire virtual currency, and obtain items.
 {% endcolumn %}
 {% column %}
-UI image
+![[img/cr2/debug-UI-3.png]]
 {% endcolumn %}
 {% endcolumns %}
 
 # Visual Polish and Photoshop Automation
 {% columns %}
 {% column %}
-Chicken portraits
+![[img/cr2/CR2-proto.apng]]
 {% endcolumn %}
 {% column %}
 Alongside level design and QA tooling, I contributed to polish and presentation tasks across the project. This included capturing in-game and promotional screenshots, which I edited in Photoshop to create bespoke level preview thumbnails for the level select screen.
