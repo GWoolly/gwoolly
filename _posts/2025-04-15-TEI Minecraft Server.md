@@ -1,8 +1,8 @@
 ---
 modal-id: TEI-minecraft
 img: TEI.png
-video: 
-title: The Enchanted Isle - Minecraft Server
+video: https://www.youtube.com/watch?v=KfF0t_S2SFk
+title: The Enchanted Isle - Multiplayer Minecraft combat maps
 secret: false
 date: 2014-12-10
 layout: default
@@ -12,9 +12,9 @@ category:
 description: Level Designer
 badge: img/icons/star.png
 ---
+<img src="img/tei/stampy.jpg" alt="" class="expandable left" data-src="/img/portfolio/Battletoads.jpg" float="inline-end" data-expandable="true">
 **The Enchanted Isle (TEI)** was a well-known Minecraft server that stood out for its inventive game modes and custom-designed maps, which frequently attracted many popular YouTubers, notably **Stampylongnose** and **The Yogscast**. 
-{% columns %}
-{% column %}
+
 Launching in 2014, TEI remained an extremely popular family friendly Minecraft server until its closure in 2017. I joined the build team not long after its launch and worked as a level designer through too its final days. During that time, I contributed to several key aspects of the server, from Skywars arenas to Hunger Games maps and original mini-games.
 
 As a level designer, my focus was mostly on **Skywars**, although I also contributed to other projects like **Hunger Games** maps and other custom mini-games that the server hosted:
@@ -22,9 +22,14 @@ As a level designer, my focus was mostly on **Skywars**, although I also contrib
 * **Hunger Games:** The original battle royale that gave birth to PubG and Fortnite!
 * **Ballistic Bows:** A fast-paced, bow-only combat team-deathmatch!
 * **RailBusters** – An on-rails shooter that is still unique to the server.
+
+
+{% columns %}
+{% column %}
+
 {% endcolumn %}
 {% column %}
-![[img/tei/stampy.jpg|Caption= Minecraft royalty Stampylongnose regularly played our levels!|class= polaroid]]
+
 {% endcolumn %}
 {% endcolumns %}
 {% columns %}
@@ -44,14 +49,3 @@ The result was longer, more strategic matches where players had choices to eithe
 {% endcolumn %}
 {% endcolumns %}
 
-```polaroid
-img/vflects/bat.gif | vflects
-img/cr2/miro.png | chickens 🐥
-img/portfolio/Battletoads.jpg | Toads 🐸
-```
-
-```gallery
-img/vflects/bat.gif | vflects
-img/cr2/miro.png | chickens 🐥
-img/portfolio/Battletoads.jpg | Toads 🐸
-```

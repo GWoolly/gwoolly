@@ -229,7 +229,28 @@ figcaption {
   background-color: #000; /* Black background for non-square images */
 }
 
+/* .portfolio-modal .modal-content .container: 
+ * set padding for left and right
+ * Remove max-width
+ */
 
+/* Increase indent of lists */
+ul {
+	position: relative;
+	left: 1em;
+}
+
+/* Text image wrapping */
+.right {
+	max-width: 50% !important;
+	float: right;
+	margin: 0 0 1em 1em;
+}
+.left {
+	max-width: 50% !important;
+	float: left;
+	margin: 0 1em 1em 0;
+}
 
 
 

@@ -13,9 +13,12 @@ secret: true
 link_info: Coming Soon
 links:
   - steam
+badge: img/icons/star.png
 ---
 Thanks to Aardman’s collaborative, cross-disciplinary culture, I was selected for an internal mentorship program to develop my level-design and UI/UX skills, enabling me to transition from Lead QA on _Chicken Run 2: Eggstraction_ into a designer role. Under the guidance of senior designers, I rapidly mastered Unreal Engine blueprints, thanks to my familiarity with written programming languages and experience with various game engines, to craft compelling level layouts, integrate interactive elements and enemy encounters, and fine-tune pacing and flow. The experience rekindled my passion for creating fun, engaging user experiences first-hand, rather than contributing solely as a respected QA tester through feedback and constructive critique, setting me on a clear path towards a Junior Game Designer role.
 
+
+<p align="right">![[img/portfolio/Battletoads.jpg]]</p>
 # Designing the world hub and training level: 
 {% columns %}
 {% column %}
