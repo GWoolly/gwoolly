@@ -69,3 +69,4 @@ node_modules
 
 _algolia_api_key
 /.obsidian
+.obsidian/workspace.json
