@@ -549,6 +549,8 @@ footer .footer-below {
 
 
 
+
+
 /* Video preview overlay and make container a hotspot for the play button */
 .video-preview-overlay {
     width: 100%;
@@ -567,13 +569,17 @@ footer .footer-below {
 
 /* Standard 16:9 container for videos */
 .portfolio-modal .video-container {
-    position: relative;
+    /* position: relative; */
     /* padding-bottom: 56.25%; /* 16:9 aspect ratio */ */
     height: auto;
 	min-height: 200px;
     overflow: hidden;
     max-width: 100%;
     /* margin: 0 auto 30px; */
+}
+
+.video-container {
+	position: absolute;
 }
 
 /* Square container for 1:1 content */
@@ -956,16 +962,36 @@ hr.star-div.svg-check {
   pointer-events: none; /* Allows clicks to pass through to underlying elements */
 }
 
-.video-preview-overlay {
-    position: relative;
+.video-preview-overlay,
+.video-preview iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    cursor: pointer;
-    aspect-ratio: 16 / 9; /* Maintain video aspect ratio */
-    overflow: hidden;
-    background: #000; /* Fallback background */
+    height: 100%;
+    max-height: none; /* Let it scale freely */
+    object-fit: cover;
+    display: block;
 }
+
+.video-preview-overlay {
+	position: relative;
+}
+
+/* Image is shown initially, iframe hidden */
+/* .video-preview iframe { */
+    /* display: none; */
+    /* border: 0; */
+	/* width: Inherit; */
+/* } */
+
+.video-preview iframe {
+  display: none;
+  max-width: 100%;
+  height: auto;
+  border: none;
+}
+
 
 .video-preview-overlay img {
     width: 100%;

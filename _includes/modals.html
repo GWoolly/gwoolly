@@ -24,22 +24,34 @@
               <!-- Your scrollable content here -->
               <!-- Video and Preview Image -->
               {% if post.video %}
-                <div class="video-container text-center video-preview">
-                  {% if post.video contains 'youtube.com' or post.video contains 'youtu.be' %}
-                    <!-- YouTube Video -->
-                    <div class="video-preview-overlay">
-                      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-                      <div class="play-button">
-                        <i class="fa fa-play"></i>
-                      </div>
-                    </div>
-                    {% assign youtube_id = '' %}
-                    {% if post.video contains 'youtube.com/watch?v=' %}
-                      {% assign youtube_id = post.video | split: 'watch?v=' | last | split: '&' | first %}
-                    {% elsif post.video contains 'youtu.be/' %}
-                      {% assign youtube_id = post.video | split: 'youtu.be/' | last %}
-                    {% endif %}
-                    <iframe style="display:none;" src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			  
+<div class="video-container text-center video-preview">
+	{% if post.video contains 'youtube.com' or post.video contains 'youtu.be' %}
+    
+		{% assign youtube_id = '' %}
+			{% if post.video contains 'youtube.com/watch?v=' %}
+			  {% assign youtube_id = post.video | split: 'watch?v=' | last | split: '&' | first %}
+			{% elsif post.video contains 'youtu.be/' %}
+			  {% assign youtube_id = post.video | split: 'youtu.be/' | last %}
+			{% endif %}
+	
+	<!-- YouTube Video -->
+    <div class="video-preview-overlay">
+      <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+      <div class="play-button">
+        <i class="fa fa-play"></i>
+      </div>
+    </div>
+
+
+
+    <iframe
+	   class="video-modal"
+      src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&showinfo=0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+
                   {% elsif post.video contains 'vimeo.com' %}
                     <!-- Vimeo Video -->
                     <div class="video-preview-overlay">
