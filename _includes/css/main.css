@@ -569,7 +569,7 @@ footer .footer-below {
 
 /* Standard 16:9 container for videos */
 .portfolio-modal .video-container {
-    /* position: relative; */
+    position: Inherit;
     /* padding-bottom: 56.25%; /* 16:9 aspect ratio */ */
     height: auto;
 	min-height: 200px;
