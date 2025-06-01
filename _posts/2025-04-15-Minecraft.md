@@ -1,8 +1,8 @@
 ---
-modal-id: TEI-minecraft
+modal-id: Minecraft
 img: TEI.png
 video: https://www.youtube.com/watch?v=KfF0t_S2SFk
-title: The Enchanted Isle - Multiplayer Minecraft combat maps
+title: "Minecraft: Multiplayer Combat Maps"
 secret: false
 date: 2014-12-10
 layout: default
@@ -23,22 +23,9 @@ As a level designer, my focus was mostly on **Skywars**, although I also contrib
 * **Ballistic Bows:** A fast-paced, bow-only combat team-deathmatch!
 * **RailBusters** – An on-rails shooter that is still unique to the server.
 
-
-{% columns %}
-{% column %}
-
-{% endcolumn %}
-{% column %}
-
-{% endcolumn %}
-{% endcolumns %}
-{% columns %}
-{% column %}
-images here
-{% endcolumn %}
-{% column %}
 ## Ufo
 This was one of my first Skywars maps. It followed a fairly standard design template seen on many servers—individual islands positioned around a central structure. It worked well for quick, high-intensity games, but I felt there was room to evolve the format.
+<img src="ufo.png" alt="" class="expandable left" data-src="/img/portfolio/Battletoads.jpg" float="right" data-expandable="true">
 ## Cloud-9
 For Cloud-9, I wanted to address the common issue of early player elimination. Most players rushed toward the center and were knocked out within the first few seconds of a match starting. To counter that, I redesigned the flow of the map:
 * Players spawned safely inside floating hot air balloons.
@@ -46,6 +33,3 @@ For Cloud-9, I wanted to address the common issue of early player elimination. M
 - The center of the map held a single thundercloud with a few valuable loot crates. Reaching it required building across open space, which made it a calculated risk.
 
 The result was longer, more strategic matches where players had choices to either take their time and build out, or risk an early push to the center.
-{% endcolumn %}
-{% endcolumns %}
-
